@@ -19,6 +19,8 @@ export default function MovieChoice() {
                 {popularMovies?.map((movie, i) => (
                     <div className="movie-container" key={i} onClick={() => navigate('/movie-details', {
                         state: {
+                            movieId: movie.id,
+                            movieBackdropPath: movie.backdrop_path,
                             movieTitle: movie.title,
                             moviePoster: movie.poster_path,
                             movieOverview: movie.overview,
@@ -33,18 +35,20 @@ export default function MovieChoice() {
         )
     }
 
+    const [TopRatedMovies, setTopRatedMovies] = useState([])
+    useEffect(()=> {
+        getTopRatedMovieList().then((result) => {
+            setTopRatedMovies(result)
+        })
+    }, [])
     const TopRatedMovieList = () => {
-        const [TopRatedMovies, setTopRatedMovies] = useState([])
-        useEffect(()=> {
-            getTopRatedMovieList().then((result) => {
-                setTopRatedMovies(result)
-            })
-        }, [])
         return (
             <>
                 {TopRatedMovies?.map((movie, i) => (
                 <div className="movie-container" key={i} onClick={() => navigate('/movie-details', {
                         state: {
+                            movieId: movie.id,
+                            movieBackdropPath: movie.backdrop_path,
                             movieTitle: movie.title,
                             moviePoster: movie.poster_path,
                             movieOverview: movie.overview,
@@ -66,12 +70,13 @@ export default function MovieChoice() {
                 setTopRatedTV(result)
             })
         }, [])
-        console.log(TopRatedTV)
         return (
             <>
                 {TopRatedTV?.map((movie, i) => (
                     <div className="movie-container" key={i} onClick={() => navigate('/movie-details', {
                         state: {
+                            movieId: movie.id,
+                            movieBackdropPath: movie.backdrop_path,
                             movieTitle: movie.name,
                             moviePoster: movie.poster_path,
                             movieOverview: movie.overview,
@@ -86,8 +91,6 @@ export default function MovieChoice() {
         )
     }
 
-    
-    
     return (
         <>
             <div className="outer" id="popular">
