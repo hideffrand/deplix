@@ -35,7 +35,7 @@ app.post('/signup', (req, res) => {
       'INSERT INTO users (username, password) VALUES (?,?)',
       [username, password],
       (err, result)=> {
-      console.log(err);
+      console.log('result');
       }
     );
 });

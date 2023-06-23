@@ -2,7 +2,6 @@ import '/src/style/style.css'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getPopularMovieList, getTopRatedMovieList, getTopRatedTVList } from '/src/api'
-import Searchbar from '../components/Searchbar'
 
 export default function MovieChoice() {
     const navigate = useNavigate()
@@ -97,7 +96,6 @@ export default function MovieChoice() {
                 <div className="wrapper">
                     <div className="title">
                         <h1>Popular Movies</h1>
-                        <Searchbar />
                     </div>
                     <section>
                         <PopularMovieList />

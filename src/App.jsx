@@ -10,7 +10,8 @@ export default function App() {
   const [handleSidebar, setHandleSidebar] = useState('')
   
   return (
-    <>
+    <div className="Ap">
+
       {
         handleSidebar == 'sidebar' &&
         <div className="Sidebar">
@@ -30,6 +31,6 @@ export default function App() {
       <Homepage />
       <MovieChoice />
       <Footer />
-    </>
+    </div>
   )
  }

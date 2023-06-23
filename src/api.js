@@ -3,9 +3,9 @@ import axios from 'axios'
 const baseUrl = import.meta.env.VITE_REACT_BASEURL
 const apiKey = import.meta.env.VITE_REACT_APIKEY
 
-export const searchMovie = async () => {
-    const search = await axios.get(`${baseUrl}/search/movie?page=1&api_key=${apiKey}`)
-    return search.data
+export const searchMovie = async (q) => {
+    const movie = await axios.get(`${baseUrl}/search/movie?query=${q}&page=1&api_key=${apiKey}`)
+    return movie.data.results
 }
 
 export const getPopularMovieList = async () => {
