@@ -1,11 +1,12 @@
 import '/src/style/style.css'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import axios from 'axios'
 
 export default function MovieDetails() {
+    const navigate = useNavigate()
     const [handleSidebar, setHandleSidebar] = useState('')
     
     const location = useLocation()
@@ -40,7 +41,6 @@ export default function MovieDetails() {
             </>
         )
     }
-
 
     return (
         <>
@@ -79,8 +79,12 @@ export default function MovieDetails() {
                         </div>
                         <div className="menus">
                             <span>
-                                <a href={movieTrailerLink}>Watch Trailer</a>
-                                <button id='watchListButton'>Add to Watchlist</button>
+                                <a href={movieTrailerLink}>Trailer</a>
+                                <button id='watchListButton' onClick={() => navigate('/watchlist', {
+                                    state: {
+
+                                    }
+                                })}>Add to Watchlist</button>
                             </span>
                             <button id='playButton'>Watch<ion-icon id='icon'name="play"></ion-icon></button>
                         </div>
