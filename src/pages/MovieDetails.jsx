@@ -62,7 +62,7 @@ export default function MovieDetails() {
                                 <a href={movieTrailerLink}>Trailer</a>
                                 <button id='watchListButton' onClick={() => navigate('/watchlist', {
                                     state: {
-
+                                        
                                     }
                                 })}>Add to Watchlist</button>
                             </span>
