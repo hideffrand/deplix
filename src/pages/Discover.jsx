@@ -9,7 +9,7 @@ export default function Discover() {
     const navigate = useNavigate()
     const location = useLocation()
     const movieName = location.state.movieName
-    
+
     const [movieList, setMovieList] = useState([])
     const [handleSidebar, setHandleSidebar] = useState('')
 
@@ -18,14 +18,13 @@ export default function Discover() {
         const query = await searchMovie(q)
         return query
     }
-
     useEffect(()=> {
         searchMovieResult(movieName).then((result) => {
             setMovieList(result)
         })
     }, [])
-
     console.log(movieList)
+
 
     const MovieListResult = () => {
         return (
@@ -35,7 +34,8 @@ export default function Discover() {
                         state: {
                             movieId: movie.id,
                             movieBackdropPath: movie.backdrop_path,
-                            movieTitle: movie.name,
+                            movieTitle: movie.title,
+                            movieName: movie.name,
                             moviePoster: movie.poster_path,
                             movieOverview: movie.overview,
                             movieReleaseDate: movie.release_date,

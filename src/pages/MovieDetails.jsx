@@ -14,33 +14,12 @@ export default function MovieDetails() {
     const movieBackdropPath = location.state.movieBackdropPath
     const movieBackdropPathUrl = `${import.meta.env.VITE_REACT_BASEIMGURL}/${movieBackdropPath}`
     const movieTitle = location.state.movieTitle
+    const movieName = location.state.movieName
     const moviePoster = location.state.moviePoster
     const movieOverview = location.state.movieOverview
     const movieReleaseDate = location.state.movieReleaseDate
     const movieVoteAverage = location.state.movieVoteAverage
     const movieTrailerLink = `https://www.youtube.com/results?search_query=${movieTitle}`
-
-    const getMovieImages = async () => {
-        const images = await axios.get(`${import.meta.env.VITE_REACT_BASEURL}/movie/${movieId}/images?api_key=${import.meta.env.VITE_REACT_APIKEY}`)
-        return images.data.backdrops
-    }
-
-    const [movieImages, setMovieImages] = useState([])
-    useEffect(()=> {
-        getMovieImages().then((result) => {
-            setMovieImages(result)
-        })
-    }, [])
-    const MovieImagesList = () => {
-        console.log(movieImages[10])
-        return (
-            <>
-                {movieImages?.map((images, i) => (
-                    <img src={`${import.meta.env.VITE_REACT_BASEIMGURL}/${images.file_path}`} alt={`${images.vote_average}`} />
-                ))}
-            </>
-        )
-    }
 
     return (
         <>
@@ -67,6 +46,7 @@ export default function MovieDetails() {
                     <img src={`${import.meta.env.VITE_REACT_BASEIMGURL}/${moviePoster}`} alt="" />
                     <section>
                         <h1>{movieTitle}</h1>
+                        <h1>{movieName}</h1>
                         <p id='movieOverview'>{movieOverview}</p>
                         <p id='movieReleaseDate'>Release date: {movieReleaseDate}</p>
                         <p>Ratings: {movieVoteAverage}</p>
