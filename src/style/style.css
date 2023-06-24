@@ -259,19 +259,19 @@ nav section button {
   background-size: cover;
 }
 .movieDetails .container {
-  padding: 100px 100px;
-  background: rgba(0, 0, 0, 0.78);
   -webkit-backdrop-filter: blur(4px);
           backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.78);
   display: flex;
   align-items: center;
   justify-content: space-around;
   height: 100vh;
   width: 100%;
+  padding: 0 5%;
 }
 .movieDetails .container img {
   animation: imgMovieDetailsTransition 1s linear;
-  width: 25%;
+  width: 20%;
   border-radius: 10px;
 }
 .movieDetails .container section {
@@ -353,10 +353,13 @@ nav section button {
 
 .outer {
   width: 100%;
-  height: auto;
+  height: 100vh;
   background-color: rgb(15, 15, 15);
+  display: flex;
+  justify-content: center;
 }
 .outer .wrapper {
+  margin: 80px 0;
   padding: 40px 100px;
 }
 .outer .wrapper .title {
@@ -374,7 +377,7 @@ nav section button {
   white-space: nowrap;
 }
 .outer .wrapper section .movie-container {
-  width: 15%;
+  width: 18%;
   display: inline-block;
   vertical-align: top;
   overflow: hidden;
@@ -393,7 +396,7 @@ nav section button {
   transition: 0.4s;
 }
 
-footer {
+.footer {
   width: 100%;
   height: 50vh;
   background-color: rgb(15, 15, 15);

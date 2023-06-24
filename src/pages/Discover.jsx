@@ -2,7 +2,6 @@ import '/src/style/style.css'
 import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { searchMovie } from '/src/api'
-import Sidebar from '../components/Sidebar'
 import Navbar from '../components/Navbar'
 
 export default function Discover() {

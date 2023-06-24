@@ -2,8 +2,6 @@ import '/src/style/style.css'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
-import Sidebar from '../components/Sidebar'
-import axios from 'axios'
 
 export default function MovieDetails() {
     const navigate = useNavigate()
@@ -29,7 +27,20 @@ export default function MovieDetails() {
                 <button onClick={() => setHandleSidebar('')}>
                     <ion-icon id='icon' name="close-outline"></ion-icon>
                 </button>
-                <Sidebar />
+                <div className="menu-container">
+                    <section>
+                        <h1>Search Movies</h1>
+                        <a href="#popular">Popular</a>
+                        <h3>Top Rated</h3>
+                        <a href="#topRatedMovies">Top Rated Movies</a>
+                        <a href="#topRatedTV">Top Rated TV</a>
+                    </section>
+                    <section>
+                        <h1>Help & Supports</h1>
+                        <a href="">Terms and Conditions</a>
+                        <a href="">Contact Support</a>
+                    </section>
+                </div>
                 </div>
             }
             <nav>
