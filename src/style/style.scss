@@ -33,59 +33,87 @@ $red: rgb(249, 25, 25);
     }
 }
 
+.voteAverageContainer {
+    width: 200px;
+    height: 20px;
+    background-color: #3c3c3c;
+    border-radius: 10px;
+    .voteAverageCover {
+        animation: voteAverageCover 1s linear;
+        .voteAverage {
+            border-radius: 10px;
+            width: 0;
+            height: 20px;
+            background-color: rgb(255, 179, 0);
+        }
+    }
+}
+
 .search-bar {
-    form {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 2px solid rgb(65, 65, 65);
+    padding: 10px 15px;
+    border-radius: 20px;
+    width: 250px;
+    input {
+        border: none;
+        background: transparent;
+    }
+    #searchIcon{
         display: flex;
-        align-items: center;
-        justify-content: center;
         background-color: transparent;
-        border: 2px solid rgb(65, 65, 65);
-        padding: 10px 15px;
-        border-radius: 20px;
-        width: 250px;
-        input {
-            border: none;
-            background: transparent;
-        }
-        button {
-            display: flex;
-            background-color: transparent;
-            border: none;
-            font-size: 28px;
-        }
+        border: none;
+        font-size: 24px;
     }
 }
 
 .discover {
     width: 100%;
     height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    white-space: nowrap;
     background-color: $black;
     color: $white;
+    padding-top: 15vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 100px 0;
-    .wrapper {
+    align-items: end;
+    gap: 5vh;
+    .container {
+        width: 100%;
         display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        .container {
-            border-radius: 10px;
-            overflow: hidden;
-            width: 20%;
-            border: 1px solid rgb(34, 34, 34);
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    .wrapper {
+        display: inline-block;
+        section {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            img {
-                width: 100%;
-            }
-            .text {
+            flex-wrap: wrap;
+            width: 100%;
+            padding: 0 5%;
+            .movie-container {
+                width: 20%;
                 display: flex;
-                flex-direction: column;
                 align-items: start;
-                justify-content: center;
+                flex-wrap: wrap;
+                padding: 16px;
+                overflow: hidden;
+                img {
+                    border: 1px solid rgb(82, 82, 82);
+                    border-radius: 10px;
+                    width: 100%;
+                    &:hover {
+                        border: 2px solid red;
+                    }
+                }
             }
         }
     }
@@ -113,20 +141,21 @@ nav {
     justify-content: space-around;
     background-color: rgba(10, 10, 10, .01);  
     backdrop-filter: blur(5px);
+    h1 {
+        font-size: 40px;
+        font-weight: 1000;
+        color: $red;
+    }
     section {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 20px;
-        h1 {
-            font-size: 40px;
-            font-weight: 1000;
-            color: $red;
+        #searchButton {
+            font-size: 24px;
+            display: none;
         }
-        button {
-            display: flex;
-            background-color: transparent;
-            border: none;
+        #hamburgerMenu, #personIcon {
             font-size: 28px;
         }
     }
@@ -244,127 +273,23 @@ nav {
     }
 }
 
-@keyframes imgMovieDetailsTransition {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
+
 
 @keyframes voteAverageCover {
     from {width: 0;}
     to {width: 100%;}
 }
 
-.movieDetails {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    .container {
-        backdrop-filter: blur( 4px );
-        background: rgba(0, 0, 0, 0.78);
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        height: 100vh;
-        width: 100%;
-        padding: 0 5%;
-        img {
-            animation: imgMovieDetailsTransition 1s linear;
-            width: 20%;
-            border-radius: 10px;
-        }
-        section {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            width: 50%;
-            p {
-                text-align: justify;
-                color: rgb(175, 175, 175);
-            }
-            .voteAverageContainer {
-                width: 200px;
-                height: 20px;
-                background-color: #3c3c3c;
-                border-radius: 10px;
-                .voteAverageCover {
-                    animation: voteAverageCover 1s linear;
-                    }
-                    .voteAverage {
-                        border-radius: 10px;
-                        width: 0;
-                        height: 20px;
-                        background-color: rgb(255, 179, 0);
-                    }
-                }
-            .menus {
-                margin-top: 44px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                span {
-                    display: flex;
-                    align-items: center;
-                    gap: 20px;
-                    a {
-                        padding: 10px 20px;
-                        border: 1px solid rgb(87, 87, 87);
-                        font-size: 16px;
-                        border-radius: 10px;
-                        transition: 0.2s;
-                        &:hover {
-                            transition: 0.2s;
-                            border: 1px solid $white;
-                        }
-                    }
-                    #watchListButton {
-                        font-size: 16px;
-                        background-color: transparent;
-                        border: 1px solid $white;
-                        padding: 10px 20px;
-                        border-radius: 10px;
-                    }
-                }
-                #playButton {
-                    background-color: transparent;
-                    border: 1px solid $red;
-                    padding: 10px 20px;
-                    font-size: 16px;
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-                    border-radius: 10px;
-                    transition: 0.2s;
-                    &:hover {
-                        transition: 0.2s;
-                        background-color: $white;
-                        border: 1px solid $white;
-                        color: $black;
-                        font-weight: bold;
-                    }
-                    #icon {
-                        font-size: 20px;
-                        transform: translateX(3px);
-                    }
-                }
-            }
-            }
-        }
-}
 
 .outer {
     width: 100%;
-    height: 100vh;
+    height: auto;
     background-color: $black;
     display: flex;
     justify-content: center;
     .wrapper {
-        margin: 80px 0;
-        padding: 40px 100px;
+        margin: 5% 0;
+        padding: 0 10%;
         .title {
             display: flex;
             align-items: center;
@@ -401,6 +326,51 @@ nav {
     }
 }
 
+@keyframes opacityTransition {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.movieDetails {
+    width: 100%;
+    min-height: 100vh;
+    max-height: auto;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .movieDetailsContainer {
+        width: 100%;
+        padding: 10%;
+        display: flex;
+        backdrop-filter: blur(5px);
+        background: rgb(0, 0, 0, 0.7);
+        animation: opacityTransition 0.3s linear;
+        min-height: 100vh;
+        max-height: auto;
+        .textSection {
+            @media only screen and (max-width: 769px) {
+                width: 100%;
+                p {
+                    font-size: 14px;
+                }
+                h1 {
+                    font-size: 24px;
+                }
+            }
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            p {
+                color: #aaaaaa;
+            }
+        }
+    }
+}
+
 .footer {
     width: 100%;
     height: 50vh;
@@ -410,6 +380,9 @@ nav {
 @media only screen and (max-width: 769px) {
     nav {
         section {
+            #searchButton {
+                display: block;
+            }
             h1 {
                 font-size: 30px;
             }
@@ -421,9 +394,20 @@ nav {
             }
         }
     }
+
+    .discover {
+        .wrapper {
+            section {
+                .movie-container {
+                    width: 50%;
+                }
+            }
+        }
+    }
     
     .homepage {
         background-image: linear-gradient(to bottom, rgba(0, 0, 0, 2), rgba(255, 255, 255, 0.05)), url('/src/assets/homepagebg.webp');
+        justify-content: center;
         .container {
             padding: 10% 10%;
             align-items: center;
@@ -452,30 +436,15 @@ nav {
 
     .outer {
         .wrapper {
-            padding: 10% 5%;
+            padding: 0 5%;
             h1 {
                 font-size: 24px;
             }
             section {
                 .movie-container {
-                    width: 40%;
+                    width: 60%;
                 }
             }
-        }
-    }
-
-    .movieDetails {
-        height: auto;
-        padding: 100px 0px;
-        .container {
-            section {
-                width: 100%;
-                padding: 10% 10%;
-            }
-            img {
-                width: 70%;
-            }
-            flex-direction: column;
         }
     }
 }

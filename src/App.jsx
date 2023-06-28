@@ -35,7 +35,7 @@ export default function App() {
       }
       <nav>
         <section>
-          <button onClick={() => setHandleSidebar('sidebar')}><ion-icon name="menu"></ion-icon></button>
+          <ion-icon onClick={() => setHandleSidebar('sidebar')} id='hamburgerMenu' name="menu"></ion-icon>
           <h1>DEPLIX</h1>
         </section>
         <Navbar />

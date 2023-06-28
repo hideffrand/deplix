@@ -21,6 +21,7 @@ export default function Popular() {
                             movieId: movie.id,
                             movieBackdropPath: movie.backdrop_path,
                             movieTitle: movie.title,
+                            movieName: movie.name,
                             moviePoster: movie.poster_path,
                             movieOverview: movie.overview,
                             movieReleaseDate: movie.release_date,
