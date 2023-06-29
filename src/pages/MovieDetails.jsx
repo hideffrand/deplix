@@ -2,8 +2,8 @@ import '/src/style/style.css'
 import { useLocation } from 'react-router-dom'
 
 export default function MovieDetails() {
-    
     const location = useLocation()
+    
     const movieId = location.state.movieId
     const movieBackdropPath = location.state.movieBackdropPath
     const movieBackdropPathUrl = `${import.meta.env.VITE_REACT_BASEIMGURL}/${movieBackdropPath}`
@@ -14,9 +14,6 @@ export default function MovieDetails() {
     const movieReleaseDate = location.state.movieReleaseDate
     const movieVoteAverage = location.state.movieVoteAverage
     const movieTrailerLink = `https://www.youtube.com/results?search_query=${movieTitle}`
-    console.log(movieName)
-    console.log('title', movieTitle)
-
 
     return (
         <div className="movieDetails" style={{
