@@ -1,11 +1,13 @@
 import '/src/style/style.css'
 import { useNavigate } from 'react-router-dom'
 
-export default function Searchbar() {
+export default function Searchbar({ setAnimation }) {
     const navigate = useNavigate()
 
     return (
-        <div className="search-bar" onClick={() => navigate('/discover')}>
+        <div className="search-bar" onClick={() => navigate('/discover')} style={{
+            animation: setAnimation
+        }}>
             <input
                 id='search'
                 type="text"

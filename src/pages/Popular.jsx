@@ -29,6 +29,7 @@ export default function Popular() {
                         }
                     })}>
                         <img src={`${import.meta.env.VITE_REACT_BASEIMGURL}/${movie.poster_path}`} alt="" />
+                        {/* <p>{ movie.title }</p> */}
                     </div>
                 ))}
             </>
@@ -37,9 +38,7 @@ export default function Popular() {
     return (
         <div className="outer" id="popular">
             <div className="wrapper">
-                <div className="title">
-                    <h1>Popular Movies</h1>
-                </div>
+                <h1>Popular Movies</h1>
                 <section>
                     <PopularMovieList />
                 </section>

@@ -7,15 +7,13 @@ export default function Discover() {
     const navigate = useNavigate()
 
     const [searchResult, setSearchResult] = useState([])
-    const [searchQuery, setSearchQuery] = useState('')
-    console.log(searchQuery)
 
     useEffect(()=> {
         setSearchResult([])
     }, [])
     
     const search = async (q) => {
-        if (q.length > 0) {
+        if (q.length > 2) {
             const query = await searchMovie(q)
             setSearchResult(query.results)
         } else {
@@ -47,33 +45,26 @@ export default function Discover() {
 
 
     return (
-        <>
-            <nav>
-                <h1>DEPLIX</h1>
-                <section>
-                <ion-icon onClick={() => setHandleSidebar('sidebar')} id='hamburgerMenu' name="menu"></ion-icon>
-                </section>
-            </nav>
-            <div className="discover">
-                <div className="container">
-                    <h1>Discover</h1>
-                    <div className="search-bar">
-                        <input
-                            id='search'
-                            type="text"
-                            placeholder='Search...'
-                            autoComplete='off'
-                            onChange={(e) => search(e.target.value)}
-                        />
-                        <ion-icon id='searchIcon'name="search"></ion-icon>
-                    </div>
-                </div>
-                <div className="wrapper">
-                    <section>
-                        <SearchResultList />
-                    </section>
+        <div className="discover">
+            <div className="container">
+                <h1>Discover</h1>
+                <div className="search-bar">
+                    <input
+                        id='search'
+                        type="text"
+                        placeholder='Search...'
+                        autoComplete='off'
+                        autoFocus
+                        onChange={(e) => search(e.target.value)}
+                    />
+                    <ion-icon id='searchIcon'name="search"></ion-icon>
                 </div>
             </div>
-        </>
+            <div className="wrapper">
+                <section>
+                    <SearchResultList />
+                </section>
+            </div>
+        </div>
     )
 }

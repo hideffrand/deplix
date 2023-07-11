@@ -22,8 +22,74 @@
 *:focus {
   outline: none;
 }
-* button {
-  cursor: pointer;
+
+@keyframes voteAverageCover {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes widthTransition {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes opacityTransition {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes opacityTransition {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes lineLoader {
+  from {
+    width: 0;
+  }
+}
+.startScreen {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(15, 15, 15);
+  flex-direction: column;
+  gap: 12px;
+  position: fixed;
+  z-index: 10;
+}
+.startScreen h1 {
+  color: rgb(249, 25, 25);
+}
+
+.lineLoaderContainer {
+  width: 100px;
+  height: 8px;
+  background-color: black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+.lineLoaderContainer .lineLoader {
+  width: 100%;
+  height: 8px;
+  background-color: rgb(46, 46, 46);
+  border-radius: 10px;
+  animation: widthTransition 1s linear;
 }
 
 .voteAverageContainer {
@@ -42,6 +108,17 @@
   background-color: rgb(255, 179, 0);
 }
 
+@keyframes searchBarAnimation {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 270px;
+  }
+  100% {
+    width: 250px;
+  }
+}
 .search-bar {
   cursor: pointer;
   display: flex;
@@ -52,10 +129,12 @@
   padding: 10px 15px;
   border-radius: 20px;
   width: 250px;
+  animation: searchBarAnimation 0.75s ease-in-out;
 }
 .search-bar input {
   border: none;
   background: transparent;
+  width: 100%;
 }
 .search-bar #searchIcon {
   display: flex;
@@ -112,102 +191,108 @@
   border: 2px solid red;
 }
 
-.login {
-  height: 100vh;
-  width: 100%;
+#buttonSection {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  gap: 12px;
 }
-.login input, .login label {
-  color: black;
+
+#addButton {
+  width: 200px;
+  padding: 12px 4px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid rgb(84, 84, 84);
+}
+#addButton:hover {
+  border: 1px solid rgb(249, 25, 25);
+}
+
+#playNowButton {
+  width: 200px;
+  padding: 12px 4px;
+  background-color: rgb(249, 25, 25);
+  border: 1px solid rgb(249, 25, 25);
+  border-radius: 10px;
+  transition: 0.2s;
+}
+#playNowButton:hover {
+  transition: 0.2s;
+  border: 1px solid black;
+  background-color: black;
+}
+
+#topRatedText {
+  font-size: 18px;
+  cursor: pointer;
+}
+#topRatedText:hover {
+  text-decoration: underline;
+}
+
+#topRatedSection {
+  animation: opacityTransition 0.3s ease-in-out;
+  padding-left: 10px;
+}
+#topRatedSection a {
+  font-size: 16px;
+  color: rgb(188, 188, 188);
+}
+
+#signupButton {
+  background-color: transparent;
+  border: 2px solid rgb(238, 238, 238);
+  padding: 12px 32px;
+  border-radius: 10px;
+}
+#signupButton:hover {
+  border: 2px solid rgb(238, 238, 238);
+  background-color: rgb(238, 238, 238);
+  color: rgb(15, 15, 15);
+  transition: 0.2s;
+}
+
+#loginButton {
+  background-color: transparent;
+  border: 2px solid rgb(15, 15, 15);
+  padding: 12px 30px;
+  border-radius: 10px;
+}
+#loginButton:hover {
+  border: 2px solid rgb(238, 238, 238);
+  background-color: rgb(238, 238, 238);
+  color: rgb(15, 15, 15);
+  transition: 0.2s;
 }
 
 nav {
-  width: 100%;
   height: 10vh;
-  z-index: 3;
-  position: fixed;
+  width: 100%;
+  background: rgb(15, 15, 15);
+  top: 0;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  background-color: rgba(10, 10, 10, 0.01);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
+  justify-content: space-between;
+  padding: 0 10%;
 }
 nav h1 {
-  font-size: 40px;
-  font-weight: 1000;
   color: rgb(249, 25, 25);
 }
 nav section {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 24px;
 }
-nav section #searchButton {
-  font-size: 24px;
-  display: none;
-}
-nav section #hamburgerMenu, nav section #personIcon {
-  font-size: 28px;
-}
-
-@keyframes side-bar {
-  from {
-    width: 0px;
-    opacity: 0;
-  }
-  to {
-    width: 300px;
-    opacity: 1;
-  }
-}
-.Sidebar {
-  z-index: 5;
-  position: fixed;
-  height: 100vh;
-  width: 300px;
-  padding: 50px 0 0 32px;
-  background-color: rgb(15, 15, 15);
-  animation: side-bar 0.1s linear;
-}
-.Sidebar button {
-  background-color: transparent;
-  border: none;
-  font-size: 32px;
-}
-.Sidebar button #icon:hover {
-  color: red;
-}
-.Sidebar .menu-container {
+nav section .links {
   display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-.Sidebar .menu-container section {
-  display: flex;
-  flex-direction: column;
-}
-.Sidebar .menu-container section h1 {
-  font-size: 22px;
-  padding-bottom: 12px;
-}
-.Sidebar .menu-container section a {
-  color: rgb(188, 188, 188);
-  font-size: 18px;
-  padding: 10px 0;
-}
-.Sidebar .menu-container section a:hover {
-  color: white;
+  gap: 12px;
+  align-items: center;
 }
 
 .homepage {
   width: 100%;
-  height: 100vh;
-  background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(255, 255, 255, 0.05)), url("/src/assets/homepagebg.webp");
+  height: 50vh;
+  background-image: linear-gradient(to right, rgb(15, 15, 15), rgba(255, 255, 255, 0)), url("/src/assets/homepagebg.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -217,79 +302,29 @@ nav section #hamburgerMenu, nav section #personIcon {
 .homepage .container {
   display: flex;
   flex-direction: column;
-  padding-left: 10%;
-  padding-top: 5%;
-}
-.homepage .container .buttons {
-  padding-top: 56px;
-  display: flex;
-  gap: 20px;
-}
-.homepage .container .buttons button {
-  font-size: 20px;
-  transition: 0.2s;
-  border-radius: 32px;
-}
-.homepage .container .buttons #sign-up {
-  background-color: rgb(15, 15, 15);
-  border: 2px solid rgb(15, 15, 15);
-  padding: 16px 52px;
-}
-.homepage .container .buttons #sign-up:hover {
-  border: 2px solid rgb(238, 238, 238);
-  background-color: rgb(238, 238, 238);
-  color: rgb(15, 15, 15);
-  transition: 0.2s;
-}
-.homepage .container .buttons #login {
-  background-color: transparent;
-  border: 2px solid rgb(238, 238, 238);
-  padding: 16px 60px;
-}
-.homepage .container .buttons #login:hover {
-  border: 2px solid rgb(238, 238, 238);
-  background-color: rgb(238, 238, 238);
-  color: rgb(15, 15, 15);
-  transition: 0.2s;
+  margin-left: 10%;
 }
 .homepage .container h3 {
-  font-size: 36px;
+  font-size: 32px;
 }
 .homepage .container h1 {
-  font-size: 84px;
+  font-size: 64px;
 }
 .homepage .container p {
   font-size: 16px;
   color: rgb(170, 170, 170);
 }
 
-@keyframes voteAverageCover {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
 .outer {
   width: 100%;
   height: auto;
   background-color: rgb(15, 15, 15);
-  display: flex;
-  justify-content: center;
 }
 .outer .wrapper {
-  margin: 5% 0;
-  padding: 0 10%;
-}
-.outer .wrapper .title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 16px;
+  margin: 5% 10%;
 }
 .outer .wrapper h1 {
-  padding-bottom: 12px;
+  padding-bottom: 14px;
 }
 .outer .wrapper section {
   overflow-x: scroll;
@@ -305,45 +340,47 @@ nav section #hamburgerMenu, nav section #personIcon {
   margin-bottom: 12px;
 }
 .outer .wrapper section .movie-container:hover {
-  border: 1px solid rgb(249, 25, 25);
+  border: 2px solid rgb(249, 25, 25);
 }
 .outer .wrapper section .movie-container img {
   width: 100%;
   transition: 0.4s;
+}
+.outer .wrapper section .movie-container img::before {
+  filter: none;
 }
 .outer .wrapper section .movie-container img:hover {
   transform: scale(1.1);
   transition: 0.4s;
 }
 
-@keyframes opacityTransition {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 .movieDetails {
   width: 100%;
   min-height: 100vh;
   max-height: auto;
   background-size: cover;
   background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .movieDetails .movieDetailsContainer {
   width: 100%;
   padding: 10%;
   display: flex;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  background: rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.8);
   animation: opacityTransition 0.3s linear;
   min-height: 100vh;
   max-height: auto;
+}
+.movieDetails .movieDetailsContainer .imgSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+.movieDetails .movieDetailsContainer .imgSection img {
+  width: 50%;
+  border-radius: 10px;
 }
 .movieDetails .movieDetailsContainer .textSection {
   width: 50%;
@@ -374,17 +411,11 @@ nav section #hamburgerMenu, nav section #personIcon {
 }
 
 @media only screen and (max-width: 769px) {
-  nav section #searchButton {
-    display: block;
-  }
-  nav section h1 {
-    font-size: 30px;
-  }
-  nav section .search-bar {
+  .search-bar {
     display: none;
   }
-  nav section button {
-    font-size: 20px;
+  nav section .links {
+    display: none;
   }
   .discover .wrapper section .movie-container {
     width: 50%;
@@ -416,6 +447,9 @@ nav section #hamburgerMenu, nav section #personIcon {
   .homepage .container p {
     text-align: center;
     font-size: 12px;
+  }
+  .movieDetails .movieDetailsContainer .imgSection {
+    display: none;
   }
   .outer .wrapper {
     padding: 0 5%;

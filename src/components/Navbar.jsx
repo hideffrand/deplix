@@ -1,17 +1,22 @@
 import '/src/style/style.css'
-import Searchbar from '../components/Searchbar'
-import { useNavigate } from 'react-router-dom'
+import Searchbar from './Searchbar'
 
 export default function Navbar() {
-    const navigate = useNavigate()
     return (
-        <>
-            <span></span>
+        <nav>
             <section>
-                <Searchbar />
-                <ion-icon id='searchButton' onClick={() => navigate('/discover')} name="search"></ion-icon>
-                <ion-icon id='personIcon' onClick={() => navigate('/discover')} name="person"></ion-icon>
+                <h1>DEPLIX</h1>
+                <div className="links">
+                    <a href="#popular">Popular</a>
+                    <a href="#topRatedMovies">Top Rated</a>
+                    <a href="">Up Coming</a>
+                </div>
             </section>
-        </>
+            <section>
+                <Searchbar setAnimation={'none'} />
+                <button id="loginButton">Login</button>
+                <button id="signupButton">Sign up</button>
+            </section>
+        </nav>
     )
 }

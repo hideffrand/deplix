@@ -1,45 +1,33 @@
 import './style/style.css'
-import { useState } from 'react'
-import Navbar from './components/Navbar'
+import { useState, useEffect } from 'react'
 import Homepage from './pages/Homepage'
 import Footer from './pages/Footer'
 import Popular from './pages/Popular'
 import TopRatedMovies from './pages/TopRatedMovies'
 import TopRatedTV from './pages/TopRatedTV'
+import Navbar from './components/Navbar'
 
 export default function App() {
-  const [handleSidebar, setHandleSidebar] = useState('')
-  
+  // const [startSCreen, setStartScreen] = useState(false)
+
+  // useEffect(() => {
+  //   setStartScreen(true)
+  //   setTimeout(() => {
+  //     setStartScreen(false)
+  //   }, 1200);
+  // }, [])
+
   return (
     <div className="App">
-      {
-        handleSidebar == 'sidebar' &&
-        <div className="Sidebar">
-          <button onClick={() => setHandleSidebar('')}>
-              <ion-icon id='icon' name="close-outline"></ion-icon>
-          </button>
-          <div className="menu-container">
-              <section>
-                  <h1>Search Movies</h1>
-                  <a href="#popular">Popular</a>
-                  <a href="#topRatedMovies">Top Rated Movies</a>
-                  <a href="#topRatedTV">Top Rated TV</a>
-              </section>
-              <section>
-                  <h1>Help & Supports</h1>
-                  <a href="">Terms and Conditions</a>
-                  <a href="">Contact Support</a>
-              </section>
-          </div>
+      {/* <div className="startScreen" style={{
+          display: startSCreen ? 'flex' : 'none'
+        }}>
+        <h1>DEPLIX</h1>
+        <div className="lineLoaderContainer">
+            <div className="lineLoader"></div>
         </div>
-      }
-      <nav>
-        <section>
-          <ion-icon onClick={() => setHandleSidebar('sidebar')} id='hamburgerMenu' name="menu"></ion-icon>
-          <h1>DEPLIX</h1>
-        </section>
-        <Navbar />
-      </nav>
+      </div> */}
+      <Navbar />
       <Homepage />
       <Popular />
       <TopRatedMovies />
