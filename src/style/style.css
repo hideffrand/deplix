@@ -143,6 +143,19 @@
   font-size: 24px;
 }
 
+#backButton {
+  width: 100px;
+  background-color: rgb(15, 15, 15);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
 .discover {
   width: 100%;
   height: 100vh;
@@ -151,7 +164,7 @@
   white-space: nowrap;
   background-color: rgb(15, 15, 15);
   color: rgb(238, 238, 238);
-  padding-top: 15vh;
+  padding-top: 10vh;
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -238,32 +251,6 @@
   color: rgb(188, 188, 188);
 }
 
-#signupButton {
-  background-color: transparent;
-  border: 2px solid rgb(238, 238, 238);
-  padding: 12px 32px;
-  border-radius: 10px;
-}
-#signupButton:hover {
-  border: 2px solid rgb(238, 238, 238);
-  background-color: rgb(238, 238, 238);
-  color: rgb(15, 15, 15);
-  transition: 0.2s;
-}
-
-#loginButton {
-  background-color: transparent;
-  border: 2px solid rgb(15, 15, 15);
-  padding: 12px 30px;
-  border-radius: 10px;
-}
-#loginButton:hover {
-  border: 2px solid rgb(238, 238, 238);
-  background-color: rgb(238, 238, 238);
-  color: rgb(15, 15, 15);
-  transition: 0.2s;
-}
-
 nav {
   height: 10vh;
   width: 100%;
@@ -274,8 +261,8 @@ nav {
   justify-content: space-between;
   padding: 0 10%;
 }
-nav h1 {
-  color: rgb(249, 25, 25);
+nav #searchIcon {
+  display: none;
 }
 nav section {
   display: flex;
@@ -283,16 +270,23 @@ nav section {
   justify-content: center;
   gap: 24px;
 }
+nav section h1 {
+  color: rgb(249, 25, 25);
+  font-size: 28px;
+}
 nav section .links {
   display: flex;
   gap: 12px;
   align-items: center;
 }
+nav section .links a {
+  font-size: 14px;
+}
 
 .homepage {
   width: 100%;
-  height: 50vh;
-  background-image: linear-gradient(to right, rgb(15, 15, 15), rgba(255, 255, 255, 0)), url("/src/assets/homepagebg.webp");
+  height: 40vh;
+  background-image: linear-gradient(to right, rgb(15, 15, 15), rgba(255, 255, 255, 0)), url("/src/assets/bladerunner.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -321,7 +315,7 @@ nav section .links {
   background-color: rgb(15, 15, 15);
 }
 .outer .wrapper {
-  margin: 5% 10%;
+  padding: 5% 10% 0 10%;
 }
 .outer .wrapper h1 {
   padding-bottom: 14px;
@@ -417,26 +411,24 @@ nav section .links {
   nav section .links {
     display: none;
   }
+  nav #searchIcon {
+    display: block;
+    font-size: 24px;
+  }
+  .discover .search-bar {
+    display: flex;
+  }
   .discover .wrapper section .movie-container {
     width: 50%;
   }
   .homepage {
-    background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgba(255, 255, 255, 0.05)), url("/src/assets/homepagebg.webp");
+    background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgba(255, 255, 255, 0.05)), url("/src/assets/bladerunner.webp");
     justify-content: center;
+    height: 90vh;
   }
   .homepage .container {
     padding: 10% 10%;
     align-items: center;
-  }
-  .homepage .container .buttons {
-    display: flex;
-    flex-direction: column;
-  }
-  .homepage .container .buttons button {
-    font-size: 16px;
-    transition: 0.2s;
-    border-radius: 32px;
-    padding: 16px 52px;
   }
   .homepage .container h1 {
     font-size: 50px;
@@ -452,7 +444,7 @@ nav section .links {
     display: none;
   }
   .outer .wrapper {
-    padding: 0 5%;
+    padding: 10%;
   }
   .outer .wrapper h1 {
     font-size: 24px;

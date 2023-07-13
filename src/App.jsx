@@ -6,6 +6,7 @@ import Popular from './pages/Popular'
 import TopRatedMovies from './pages/TopRatedMovies'
 import TopRatedTV from './pages/TopRatedTV'
 import Navbar from './components/Navbar'
+import Upcoming from './pages/Upcoming'
 
 export default function App() {
   // const [startSCreen, setStartScreen] = useState(false)
@@ -32,6 +33,7 @@ export default function App() {
       <Popular />
       <TopRatedMovies />
       <TopRatedTV />
+      <Upcoming />
       <Footer />
     </div>
   )

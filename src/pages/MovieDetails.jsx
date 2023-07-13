@@ -1,6 +1,7 @@
 import '/src/style/style.css'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import BackButton from '../components/BackButton'
 
 export default function MovieDetails() {
     const location = useLocation()
@@ -29,6 +30,7 @@ export default function MovieDetails() {
                 backgroundImage: loading ? `linear-gradient(to right, rgba(0, 0, 0, 1), rgba(25, 25, 25, 1)` : `linear-gradient(to right, rgba(0, 0, 0, 1), rgba(255, 255, 255, 0)), url(${movieBackdropPathUrl})`
             }}>
                 <div className="movieDetailsContainer">
+
                     <div className="imgSection">
                         <img src={`${import.meta.env.VITE_REACT_BASEIMGURL}/${moviePoster}`} alt={`Poster ${movieTitle ? movieTitle : movieName}`} />
                     </div>
@@ -52,6 +54,7 @@ export default function MovieDetails() {
                             <button id='addButton'>Add to watchlist</button>
                             <button id='playNowButton'>Play now</button>
                         </section>
+                        <BackButton />
                     </div>
                 </div>
             </div>
