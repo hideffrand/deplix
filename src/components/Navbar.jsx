@@ -8,17 +8,22 @@ export default function Navbar() {
     return (
         <nav>
             <section>
-                <h1>DEPLIX</h1>
+                <h1 onClick={()=> navigate('/')}>DEPLIX</h1>
                 <div className="links">
                     <a href="#popular">Popular</a>
                     <a href="#topRatedMovies">Top Rated</a>
                     <a href="#upcoming">Up Coming</a>
                 </div>
             </section>
-            <div id="searchBar">
-                <Searchbar setAnimation={'none'} />
-            </div>
-            <ion-icon id='searchIcon' name="search" onClick={()=> navigate('/discover')}></ion-icon>
+            <section>
+                <div id="searchBar">
+                    <Searchbar setAnimation={'none'} />
+                </div>
+                <ion-icon id='searchIcon' name="search" onClick={() => navigate('/discover')}></ion-icon>
+                <button className="userBtn" onClick={() => navigate('signup')}>
+                    <ion-icon name="person-circle-outline"></ion-icon>
+                </button>
+            </section>
         </nav>
     )
 }

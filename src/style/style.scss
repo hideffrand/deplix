@@ -4,6 +4,7 @@ $title-size: 32px;
 $black: rgb(15, 15, 15);
 $white: rgb(238, 238, 238);
 $red: rgb(249, 25, 25);
+$orange: rgb(255, 179, 0);
 
 * {
     &::-webkit-scrollbar {
@@ -29,6 +30,24 @@ $red: rgb(249, 25, 25);
     }
 }
 
+button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-radius: 10px;
+}
+
+img {
+    user-select: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
 @keyframes voteAverageCover {
     from {width: 0;}
     to {width: 100%;}
@@ -52,6 +71,110 @@ $red: rgb(249, 25, 25);
 @keyframes lineLoader {
     from {width: 0;}
     to {}
+}
+
+#logo {
+    color: $red;
+}
+
+.userBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 26px;
+}
+
+.authForm {
+    width: 100%;
+    height: 100vh;
+    background-image: url('/src/assets/bladerunner.webp');
+    background-color: $black;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    .container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 4% 10%;
+        width: 40%;
+        background-color: $black;
+        gap: 24px;
+        height: 100vh;
+        p, h1 {
+            text-align: center;
+            background-color: $black;
+        }
+        p {
+            font-size: 14px;
+            color: #878787;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            .passwordInput {
+                margin: 4px 0 12px 0;
+                padding: 10px;
+                border-radius: 10px;
+                background-color: $black;
+                border: 1px solid rgb(123, 123, 123);
+                display: flex;
+                justify-content: space-between;
+                input {
+                    border: none;
+                    padding: 0;
+                    margin: 0;
+                    &:focus {
+                        border: none;
+                    }
+                }
+                #eyeBtn {
+                    background-color: transparent;
+                    border: none;
+                    width: 24px;
+                    font-size: 20px;
+                }
+            }
+            span {
+                display: flex;
+                gap: 12px;
+                a {
+                    text-decoration: underline;
+                }
+            }
+            #loginBtn {
+                margin-top: 12px;
+                border: 1px solid $red;
+                background-color: $red;
+                padding: 10px 20px;
+                cursor: pointer;
+                font-weight: bold;
+                font-size: 1rem;
+            }
+            input {
+                margin: 4px 0 12px 0;
+                padding: 10px;
+                border-radius: 10px;
+                background-color: $black;
+                border: 1px solid rgb(123, 123, 123);
+                &:focus {
+                    border: 1px solid white;
+                }
+            }
+        }
+        #googleBtn {
+            display: flex;
+            align-items: center;
+            background-color: $black;
+            border: 1px solid rgb(123, 123, 123);
+            padding: 12px 20px;
+            img {
+                width: 10%;
+            }
+        }
+    }
 }
 
 .startScreen {
@@ -88,7 +211,7 @@ $red: rgb(249, 25, 25);
 
 .voteAverageContainer {
     width: 200px;
-    height: 20px;
+    height: 15px;
     background-color: #3c3c3c;
     border-radius: 10px;
     .voteAverageCover {
@@ -96,8 +219,8 @@ $red: rgb(249, 25, 25);
         .voteAverage {
             border-radius: 10px;
             width: 0;
-            height: 20px;
-            background-color: rgb(255, 179, 0);
+            height: 15px;
+            background-color: $orange;
         }
     }
 }
@@ -115,34 +238,45 @@ $red: rgb(249, 25, 25);
     justify-content: center;
     background-color: transparent;
     border: 2px solid rgb(65, 65, 65);
-    padding: 10px 15px;
     border-radius: 20px;
     width: 250px;
     animation: searchBarAnimation 0.75s ease-in-out;
+    padding: 10px 15px;
     input {
-        border: none;
+        border: 1px transparent;
         background: transparent;
         width: 100%;
     }
     #searchIcon{
         display: flex;
         background-color: transparent;
-        border: none;
         font-size: 24px;
+        border-left: 1px solid rgb(65, 65, 65);
+        padding-left: 10px;
     }
+}
+
+#closeIcon {
+    font-size: 24px;
+    color: rgb(123, 123, 123);
+    display: none;
+    padding-right: 10px;
+    border: 1px transparent;
 }
 
 #backButton {
     width: 100px;
-    background-color: $black;
+    background-color: transparent;
     border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    margin-top: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 4px;
+    transition: 0.1s;
+    &:hover {
+        gap: 10px;
+        transition: 0.1s;
+    }
 }
 
 .discover {
@@ -193,50 +327,34 @@ $red: rgb(249, 25, 25);
     }
 }
 
-#buttonSection {
+.buttonSection {
     display: flex; 
     gap: 12px;
 }
 
-#addButton {
+#addButton, #playNowButton {
     width: 200px;
     padding: 12px 4px;
-    background-color: transparent;
-    border-radius: 10px;
-    border: 1px solid rgb(84, 84, 84);
+    .icon {
+        font-size: 50px;
+    }
+}
+
+#addButton {
+    background-color: black;
+    border: 1px solid black;
     &:hover {
         border: 1px solid $red;
     }
 }
 
 #playNowButton {
-    width: 200px;
-    padding: 12px 4px;
     background-color: $red;
     border: 1px solid $red;
-    border-radius: 10px;
     transition: 0.2s;
     &:hover {
         transition: 0.2s;
-        border: 1px solid black;
-        background-color: black;
-    }
-}
-
-#topRatedText {
-    font-size: 18px;
-    cursor: pointer;
-    &:hover {
-        text-decoration: underline;
-    }
-}
-
-#topRatedSection {
-    animation: opacityTransition 0.3s ease-in-out;
-    padding-left: 10px;
-    a {
-        font-size: 16px;
-        color: rgb(188, 188, 188);
+        filter: drop-shadow(0 0 10px rgb(147, 0, 0));
     }
 }
 
@@ -244,11 +362,12 @@ nav {
     height: 10vh;
     width: 100%;
     background: $black;
-    top: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 10%;
+    position: fixed;
+    z-index: 2;
     #searchIcon {
         display: none;
     }
@@ -260,13 +379,18 @@ nav {
         h1 {
             color: $red;
             font-size: 28px;
+            cursor: pointer;
         }
         .links {
             display: flex;
-            gap: 12px;
+            gap: 18px;
             align-items: center;
             a {
                 font-size: 14px;
+                color: #aeaeae;
+                &:hover {
+                    color: white;
+                }
             }
         }
     }
@@ -289,22 +413,28 @@ nav {
 
 .homepage {
     width: 100%;
-    height: 40vh;
-    background-image: linear-gradient(to right, rgb(15,15,15,1), rgb(255,255,255, 0)), url('/src/assets/bladerunner.webp');
+    height: 50vh;
+    background-image: 
+        linear-gradient(to right, rgb(15,15,15,1), rgb(255,255,255, 0)), 
+        linear-gradient(to left, rgb(15,15,15,1), rgb(255,255,255, 0)), 
+        url('/src/assets/bladerunner.webp')
+    ;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
+    padding-top: 10vh;
     // animation: dinamicBackground 5s infinite;
     .container {
         display: flex;
         flex-direction: column;
-        margin-left: 10%;
+        margin: 0 10%;
         h3 {
             font-size: 32px;
         }
         h1 {
+            filter: drop-shadow(0 0 60px black);
             font-size: 64px;
         }
         p {
@@ -314,41 +444,94 @@ nav {
     }
 }
 
-.outer {
+.carousel {
     width: 100%;
     height: auto;
     background-color: $black;
     .wrapper {
-        padding: 5% 10% 0 10%;
+        padding: 5% 10%;
         h1 {
             padding-bottom: 14px;
         }
         section {
             overflow-x: scroll;
-            overflow-y: hidden;
             white-space: nowrap;
             .movie-container {
                 width: 18%;
                 display: inline-block;
-                vertical-align: top;
+                margin: 16px 16px 5px 0;
                 overflow: hidden;
-                margin-right: 12px;
-                margin-bottom: 12px;
-                &:hover {
-                    border: 2px solid $red;
-                }
                 img {
                     width: 100%;
-                    transition: 0.4s;
-                    &::before {
-                        filter: none;
+                    border: 1px solid transparent;
+                    border-radius: 10px;
+                    &:hover {  
+                        border: 1px solid $red;
+                        filter: drop-shadow(0 0 2px $red);
                     }
-                    &:hover {
-                        transform: scale(1.1);
-                        transition: 0.4s;
+                }
+                .titleSection {
+                    width: 100%;
+                    overflow: hidden;
+                    color: rgb(160, 160, 160);
+                    font-weight: 550;
+                }
+                .rateTag {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 12px;
+                    span {
+                        color: orange;
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                    }
+                    button {
+                        background-color: transparent;
+                        border: none;
+                        font-size: 20px;
                     }
                 }
             }
+        }
+    }
+}
+
+.reviewSection {
+    height: auto;
+    background-color: rgb(21, 21, 21);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 5vh 0 5vh 10%;
+    p {
+        font-size: 12.5px;
+        color: #929292;
+    }
+    .reviewContainer {
+        padding: 20px;
+        margin: 0 10% 0 0;
+        border: 1px solid rgb(35, 35, 35);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+            .profileImage {
+                width: 50px;
+                height: 50px;
+                background-position: center;
+                background-size: contain;
+                border-radius: 50%;
+            }
+        }
+        #author {
+            color: white;
         }
     }
 }
@@ -359,15 +542,16 @@ nav {
     max-height: auto;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     .movieDetailsContainer {
         width: 100%;
-        padding: 10%;
         display: flex;
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(15px);
         background: rgb(0, 0, 0, 0.8);
         animation: opacityTransition 0.3s linear;
         min-height: 100vh;
         max-height: auto;
+        padding: 0 10%;
         .imgSection {
             display: flex;
             justify-content: center;
@@ -376,16 +560,17 @@ nav {
             img {
                 width: 50%;
                 border-radius: 10px;
+                filter: drop-shadow(0 0 50px rgb(37, 37, 37));
             }
         }
         .textSection {
             @media only screen and (max-width: 769px) {
                 width: 100%;
                 p {
-                    font-size: 14px;
+                    font-size: 10px;
                 }
                 h1 {
-                    font-size: 24px;
+                    font-size: 20px;
                 }
             }
             width: 50%;
@@ -400,6 +585,10 @@ nav {
     }
 }
 
+#menuIcon {
+    font-size: 28px;
+}
+
 .footer {
     width: 100%;
     height: 50vh;
@@ -407,12 +596,17 @@ nav {
 }
 
 @media only screen and (max-width: 769px) {
+    .authForm {
+        .container {
+            width: 100%;
+        }
+    }
     .search-bar {
         display: none;
     }
+
     nav {
         section {
-            
             .links{
                 display: none;
             } 
@@ -421,6 +615,11 @@ nav {
             display: block;
             font-size: 24px;
         }
+    }
+
+    #secondaryNav {
+        display: flex;
+        justify-content: space-between;
     }
 
     .discover {
@@ -437,34 +636,45 @@ nav {
     }
     
     .homepage {
-        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 2), rgba(255, 255, 255, 0.05)), url('/src/assets/bladerunner.webp');
         justify-content: center;
-        height: 90vh;
+        height: 40vh;
         .container {
-            padding: 10% 10%;
-            align-items: center;
+            margin: 0;
             h1 {
-                font-size: 50px;
+                font-size: 40px;
             }
             h3 {
-                font-size: 30px;
+                font-size: 20px;
             }
             p {
-                text-align: center;
-                font-size: 12px;
+                font-size: 10px;
             }
         }
     }
 
     .movieDetails {
         .movieDetailsContainer {
+            padding-top: 10vh;
+            padding-bottom: 4vh;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             .imgSection {
-                display: none;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .textSection {
+                gap: 8px;
+                text-align: justify;
+                .buttonSection {
+                    margin-top: 2vh;
+                    width: 100%;
+                }
             }
         }
     }
 
-    .outer {
+    .carousel {
         .wrapper {
             padding: 10%;
             h1 {
@@ -472,7 +682,7 @@ nav {
             }
             section {
                 .movie-container {
-                    width: 60%;
+                    width: 40%;
                 }
             }
         }

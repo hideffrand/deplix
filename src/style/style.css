@@ -23,6 +23,24 @@
   outline: none;
 }
 
+button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 10px;
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 @keyframes voteAverageCover {
   from {
     width: 0;
@@ -60,6 +78,110 @@
     width: 0;
   }
 }
+#logo {
+  color: rgb(249, 25, 25);
+}
+
+.userBtn {
+  background-color: transparent;
+  border: none;
+  font-size: 26px;
+}
+
+.authForm {
+  width: 100%;
+  height: 100vh;
+  background-image: url("/src/assets/bladerunner.webp");
+  background-color: rgb(15, 15, 15);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.authForm .container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 4% 10%;
+  width: 40%;
+  background-color: rgb(15, 15, 15);
+  gap: 24px;
+  height: 100vh;
+}
+.authForm .container p, .authForm .container h1 {
+  text-align: center;
+  background-color: rgb(15, 15, 15);
+}
+.authForm .container p {
+  font-size: 14px;
+  color: #878787;
+}
+.authForm .container form {
+  display: flex;
+  flex-direction: column;
+}
+.authForm .container form .passwordInput {
+  margin: 4px 0 12px 0;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(15, 15, 15);
+  border: 1px solid rgb(123, 123, 123);
+  display: flex;
+  justify-content: space-between;
+}
+.authForm .container form .passwordInput input {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.authForm .container form .passwordInput input:focus {
+  border: none;
+}
+.authForm .container form .passwordInput #eyeBtn {
+  background-color: transparent;
+  border: none;
+  width: 24px;
+  font-size: 20px;
+}
+.authForm .container form span {
+  display: flex;
+  gap: 12px;
+}
+.authForm .container form span a {
+  text-decoration: underline;
+}
+.authForm .container form #loginBtn {
+  margin-top: 12px;
+  border: 1px solid rgb(249, 25, 25);
+  background-color: rgb(249, 25, 25);
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.authForm .container form input {
+  margin: 4px 0 12px 0;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(15, 15, 15);
+  border: 1px solid rgb(123, 123, 123);
+}
+.authForm .container form input:focus {
+  border: 1px solid white;
+}
+.authForm .container #googleBtn {
+  display: flex;
+  align-items: center;
+  background-color: rgb(15, 15, 15);
+  border: 1px solid rgb(123, 123, 123);
+  padding: 12px 20px;
+}
+.authForm .container #googleBtn img {
+  width: 10%;
+}
+
 .startScreen {
   width: 100%;
   height: 100vh;
@@ -94,7 +216,7 @@
 
 .voteAverageContainer {
   width: 200px;
-  height: 20px;
+  height: 15px;
   background-color: #3c3c3c;
   border-radius: 10px;
 }
@@ -104,7 +226,7 @@
 .voteAverageContainer .voteAverageCover .voteAverage {
   border-radius: 10px;
   width: 0;
-  height: 20px;
+  height: 15px;
   background-color: rgb(255, 179, 0);
 }
 
@@ -126,34 +248,45 @@
   justify-content: center;
   background-color: transparent;
   border: 2px solid rgb(65, 65, 65);
-  padding: 10px 15px;
   border-radius: 20px;
   width: 250px;
   animation: searchBarAnimation 0.75s ease-in-out;
+  padding: 10px 15px;
 }
 .search-bar input {
-  border: none;
+  border: 1px transparent;
   background: transparent;
   width: 100%;
 }
 .search-bar #searchIcon {
   display: flex;
   background-color: transparent;
-  border: none;
   font-size: 24px;
+  border-left: 1px solid rgb(65, 65, 65);
+  padding-left: 10px;
+}
+
+#closeIcon {
+  font-size: 24px;
+  color: rgb(123, 123, 123);
+  display: none;
+  padding-right: 10px;
+  border: 1px transparent;
 }
 
 #backButton {
   width: 100px;
-  background-color: rgb(15, 15, 15);
+  background-color: transparent;
   border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  margin-top: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
+  transition: 0.1s;
+}
+#backButton:hover {
+  gap: 10px;
+  transition: 0.1s;
 }
 
 .discover {
@@ -204,62 +337,47 @@
   border: 2px solid red;
 }
 
-#buttonSection {
+.buttonSection {
   display: flex;
   gap: 12px;
 }
 
-#addButton {
+#addButton, #playNowButton {
   width: 200px;
   padding: 12px 4px;
-  background-color: transparent;
-  border-radius: 10px;
-  border: 1px solid rgb(84, 84, 84);
+}
+#addButton .icon, #playNowButton .icon {
+  font-size: 50px;
+}
+
+#addButton {
+  background-color: black;
+  border: 1px solid black;
 }
 #addButton:hover {
   border: 1px solid rgb(249, 25, 25);
 }
 
 #playNowButton {
-  width: 200px;
-  padding: 12px 4px;
   background-color: rgb(249, 25, 25);
   border: 1px solid rgb(249, 25, 25);
-  border-radius: 10px;
   transition: 0.2s;
 }
 #playNowButton:hover {
   transition: 0.2s;
-  border: 1px solid black;
-  background-color: black;
-}
-
-#topRatedText {
-  font-size: 18px;
-  cursor: pointer;
-}
-#topRatedText:hover {
-  text-decoration: underline;
-}
-
-#topRatedSection {
-  animation: opacityTransition 0.3s ease-in-out;
-  padding-left: 10px;
-}
-#topRatedSection a {
-  font-size: 16px;
-  color: rgb(188, 188, 188);
+  filter: drop-shadow(0 0 10px rgb(147, 0, 0));
 }
 
 nav {
   height: 10vh;
   width: 100%;
   background: rgb(15, 15, 15);
-  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 10%;
+  position: fixed;
+  z-index: 2;
 }
 nav #searchIcon {
   display: none;
@@ -273,35 +391,42 @@ nav section {
 nav section h1 {
   color: rgb(249, 25, 25);
   font-size: 28px;
+  cursor: pointer;
 }
 nav section .links {
   display: flex;
-  gap: 12px;
+  gap: 18px;
   align-items: center;
 }
 nav section .links a {
   font-size: 14px;
+  color: #aeaeae;
+}
+nav section .links a:hover {
+  color: white;
 }
 
 .homepage {
   width: 100%;
-  height: 40vh;
-  background-image: linear-gradient(to right, rgb(15, 15, 15), rgba(255, 255, 255, 0)), url("/src/assets/bladerunner.webp");
+  height: 50vh;
+  background-image: linear-gradient(to right, rgb(15, 15, 15), rgba(255, 255, 255, 0)), linear-gradient(to left, rgb(15, 15, 15), rgba(255, 255, 255, 0)), url("/src/assets/bladerunner.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
+  padding-top: 10vh;
 }
 .homepage .container {
   display: flex;
   flex-direction: column;
-  margin-left: 10%;
+  margin: 0 10%;
 }
 .homepage .container h3 {
   font-size: 32px;
 }
 .homepage .container h1 {
+  filter: drop-shadow(0 0 60px black);
   font-size: 64px;
 }
 .homepage .container p {
@@ -309,43 +434,96 @@ nav section .links a {
   color: rgb(170, 170, 170);
 }
 
-.outer {
+.carousel {
   width: 100%;
   height: auto;
   background-color: rgb(15, 15, 15);
 }
-.outer .wrapper {
-  padding: 5% 10% 0 10%;
+.carousel .wrapper {
+  padding: 5% 10%;
 }
-.outer .wrapper h1 {
+.carousel .wrapper h1 {
   padding-bottom: 14px;
 }
-.outer .wrapper section {
+.carousel .wrapper section {
   overflow-x: scroll;
-  overflow-y: hidden;
   white-space: nowrap;
 }
-.outer .wrapper section .movie-container {
+.carousel .wrapper section .movie-container {
   width: 18%;
   display: inline-block;
-  vertical-align: top;
+  margin: 16px 16px 5px 0;
   overflow: hidden;
-  margin-right: 12px;
+}
+.carousel .wrapper section .movie-container img {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 10px;
+}
+.carousel .wrapper section .movie-container img:hover {
+  border: 1px solid rgb(249, 25, 25);
+  filter: drop-shadow(0 0 2px rgb(249, 25, 25));
+}
+.carousel .wrapper section .movie-container .titleSection {
+  width: 100%;
+  overflow: hidden;
+  color: rgb(160, 160, 160);
+  font-weight: 550;
+}
+.carousel .wrapper section .movie-container .rateTag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 12px;
 }
-.outer .wrapper section .movie-container:hover {
-  border: 2px solid rgb(249, 25, 25);
+.carousel .wrapper section .movie-container .rateTag span {
+  color: orange;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
-.outer .wrapper section .movie-container img {
+.carousel .wrapper section .movie-container .rateTag button {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+}
+
+.reviewSection {
+  height: auto;
+  background-color: rgb(21, 21, 21);
   width: 100%;
-  transition: 0.4s;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 5vh 0 5vh 10%;
 }
-.outer .wrapper section .movie-container img::before {
-  filter: none;
+.reviewSection p {
+  font-size: 12.5px;
+  color: #929292;
 }
-.outer .wrapper section .movie-container img:hover {
-  transform: scale(1.1);
-  transition: 0.4s;
+.reviewSection .reviewContainer {
+  padding: 20px;
+  margin: 0 10% 0 0;
+  border: 1px solid rgb(35, 35, 35);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.reviewSection .reviewContainer .profile {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.reviewSection .reviewContainer .profile .profileImage {
+  width: 50px;
+  height: 50px;
+  background-position: center;
+  background-size: contain;
+  border-radius: 50%;
+}
+.reviewSection .reviewContainer #author {
+  color: white;
 }
 
 .movieDetails {
@@ -354,17 +532,18 @@ nav section .links a {
   max-height: auto;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
 }
 .movieDetails .movieDetailsContainer {
   width: 100%;
-  padding: 10%;
   display: flex;
-  -webkit-backdrop-filter: blur(8px);
-          backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
   background: rgba(0, 0, 0, 0.8);
   animation: opacityTransition 0.3s linear;
   min-height: 100vh;
   max-height: auto;
+  padding: 0 10%;
 }
 .movieDetails .movieDetailsContainer .imgSection {
   display: flex;
@@ -375,6 +554,7 @@ nav section .links a {
 .movieDetails .movieDetailsContainer .imgSection img {
   width: 50%;
   border-radius: 10px;
+  filter: drop-shadow(0 0 50px rgb(37, 37, 37));
 }
 .movieDetails .movieDetailsContainer .textSection {
   width: 50%;
@@ -388,14 +568,18 @@ nav section .links a {
     width: 100%;
   }
   .movieDetails .movieDetailsContainer .textSection p {
-    font-size: 14px;
+    font-size: 10px;
   }
   .movieDetails .movieDetailsContainer .textSection h1 {
-    font-size: 24px;
+    font-size: 20px;
   }
 }
 .movieDetails .movieDetailsContainer .textSection p {
   color: #aaaaaa;
+}
+
+#menuIcon {
+  font-size: 28px;
 }
 
 .footer {
@@ -405,6 +589,9 @@ nav section .links a {
 }
 
 @media only screen and (max-width: 769px) {
+  .authForm .container {
+    width: 100%;
+  }
   .search-bar {
     display: none;
   }
@@ -415,6 +602,10 @@ nav section .links a {
     display: block;
     font-size: 24px;
   }
+  #secondaryNav {
+    display: flex;
+    justify-content: space-between;
+  }
   .discover .search-bar {
     display: flex;
   }
@@ -422,34 +613,47 @@ nav section .links a {
     width: 50%;
   }
   .homepage {
-    background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgba(255, 255, 255, 0.05)), url("/src/assets/bladerunner.webp");
     justify-content: center;
-    height: 90vh;
+    height: 40vh;
   }
   .homepage .container {
-    padding: 10% 10%;
-    align-items: center;
+    margin: 0;
   }
   .homepage .container h1 {
-    font-size: 50px;
+    font-size: 40px;
   }
   .homepage .container h3 {
-    font-size: 30px;
+    font-size: 20px;
   }
   .homepage .container p {
-    text-align: center;
-    font-size: 12px;
+    font-size: 10px;
+  }
+  .movieDetails .movieDetailsContainer {
+    padding-top: 10vh;
+    padding-bottom: 4vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .movieDetails .movieDetailsContainer .imgSection {
-    display: none;
+    width: 100%;
+    margin-bottom: 20px;
   }
-  .outer .wrapper {
+  .movieDetails .movieDetailsContainer .textSection {
+    gap: 8px;
+    text-align: justify;
+  }
+  .movieDetails .movieDetailsContainer .textSection .buttonSection {
+    margin-top: 2vh;
+    width: 100%;
+  }
+  .carousel .wrapper {
     padding: 10%;
   }
-  .outer .wrapper h1 {
+  .carousel .wrapper h1 {
     font-size: 24px;
   }
-  .outer .wrapper section .movie-container {
-    width: 60%;
+  .carousel .wrapper section .movie-container {
+    width: 40%;
   }
 }/*# sourceMappingURL=style.css.map */

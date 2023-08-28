@@ -1,0 +1,6 @@
+bugs that still need to be fixed!
+
+type: undefined
+decide type (movie or tv) based on title(movie) or name(tv)
+
+load reviews if 404 then 0 reviews
