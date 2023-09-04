@@ -19,17 +19,9 @@ export default function Carousel({ movies, setId, title, setReload }) {
                                 navigate(`/movie-details/${movie.id}`, {
                                     state: {
                                         movieId: movie.id,
-                                        movieBackdropPath: movie.backdrop_path,
-                                        movieTitle: movie.title,
-                                        movieName: movie.name,
-                                        moviePoster: movie.poster_path,
-                                        movieOverview: movie.overview,
-                                        movieReleaseDate: movie.release_date,
-                                        movieVoteAverage: movie.vote_average,
                                         movieType: movie.title ? 'movie' :'tv',
                                     }
                                 })
-                                
                             }}
                         />
                         <div className="titleSection">

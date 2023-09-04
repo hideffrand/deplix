@@ -1,42 +1,24 @@
 import '/src/style/style.css'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { getReviews, getSimilar } from '../api'
+import { getReviews, getSimilar, getDetails } from '../api'
 import SecondaryNavbar from '../components/SecondaryNavbar'
 import Carousel from '../components/Carousel'
+import Footer from './Footer'
 
 export default function MovieDetails() {
-    const navigate = useNavigate()
-    const location = useLocation()
-    const movieId = location.state.movieId
-    const movieBackdropPath = location.state.movieBackdropPath
-    const movieBackdropPathUrl = `${import.meta.env.VITE_REACT_BASEIMGURL}/${movieBackdropPath}`
-    const movieTitle = location.state.movieTitle
-    console.log('mov title: ', movieTitle)
-    const movieName = location.state.movieName
-    console.log('mov name: ', movieName)
-    const moviePoster = location.state.moviePoster
-    const movieOverview = location.state.movieOverview
-    const movieReleaseDate = location.state.movieReleaseDate
-    const movieVoteAverage = location.state.movieVoteAverage
-    const type = location.state.movieType
-
-    let titleForCarousel = ''
-    if (type == 'movie') {
-        titleForCarousel = type.charAt(0).toUpperCase() + (type.slice(1)) + 's'
-    }
-    if (type == 'tv') {
-        titleForCarousel = type.toUpperCase() + 's'
-    }
-    console.log('type :',type)
-
+    const [details, setDetails] = useState([])
     const [reviews, setReviews] = useState([])
     const [similar, setSimilar] = useState([])
     const [maxLength, setMaxLength] = useState(true)
     const [loadingReviews, setLoadingReviews] = useState(false)
-
+    
     useEffect(() => {
-        document.title = movieTitle + ' '+ '- Deplix'
+        getDetails('movie', movieId).then((result) => {
+            setDetails(result)
+            console.log('log details: ', result)
+        })
+        document.title = (details.title ? details.title : details.name) + ' '+ '- Deplix'
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
         getReviews(type, movieId).then(result => {
             setLoadingReviews(true)
@@ -50,6 +32,25 @@ export default function MovieDetails() {
             setSimilar(result)
         })
     }, [])
+    
+    const navigate = useNavigate()
+    const location = useLocation()
+    const type = location.state.movieType
+    const movieId = location.state.movieId
+    const voteAverage = details.vote_average
+    const movieTitle = location.state.movieTitle
+    const movieName = location.state.movieName
+
+    let titleForCarousel = ''
+    if (type == 'movie') {
+        titleForCarousel = type.charAt(0).toUpperCase() + (type.slice(1)) + 's'
+    }
+    if (type == 'tv') {
+        titleForCarousel = type.toUpperCase() + 's'
+    }
+    console.log('type :',type)
+
+
 
     const ReviewList = () => {
         if (reviews?.length > 0) {
@@ -96,26 +97,26 @@ export default function MovieDetails() {
         <>
             <SecondaryNavbar />
             <div className="movieDetails" style={{
-                backgroundImage: movieBackdropPath ? `linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)), url(${movieBackdropPathUrl})` : 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))'
+                backgroundImage: details.backdrop_path ? `linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)), url(${import.meta.env.VITE_REACT_BASEIMGURL}/${details.poster_path})` : 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))'
             }}>
                 <div className="movieDetailsContainer">
                     <div className="imgSection">
                         <img
-                            src={moviePoster ? `${import.meta.env.VITE_REACT_BASEIMGURL}/${moviePoster}` : '/src/assets/imgNotFound.webp'}
-                            alt={`Poster ${movieTitle ? movieTitle : movieName}`}
+                            src={details.poster_path ? `${import.meta.env.VITE_REACT_BASEIMGURL}/${details.poster_path}` : '/src/assets/imgNotFound.webp'}
+                            alt={`Poster ${details.title ? details.title : details.name}`}
                         />
                     </div>
                     <div className="textSection">
-                        <h1>{movieTitle ? movieTitle : movieName}</h1>
-                        <p id='movieOverview'>{movieOverview}</p>
-                        <p id='movieReleaseDate'>Release date: {movieReleaseDate}</p>
-                        <p>Ratings: {movieVoteAverage.toFixed(1)}</p>
+                        <h1>{details.title ? details.title : details.name}</h1>
+                        <p id='movieOverview'>{details.overview}</p>
+                        <p id='movieReleaseDate'>Release date: {details.release_date}</p>
+                        <p>Ratings: {voteAverage?.toFixed(1)}</p>
                         <div className="voteAverageContainer">
                             <div className="voteAverageCover">
                                 <div
                                     className="voteAverage"
                                     style={{
-                                    width: `${movieVoteAverage * 10}%`
+                                    width: `${details.vote_average * 10}%`
                                     }}
                                 ></div>
                             </div>
@@ -135,7 +136,8 @@ export default function MovieDetails() {
                 <h3>Reviews</h3>
                 {loadingReviews ? <p style={{paddingLeft: '10%', color: 'rgb(200, 200, 200)'}}>Loading...</p> : <ReviewList />}
             </div>
-            <Carousel movies={similar} title={`Similar ${titleForCarousel}`} setReload={true}/>
+            <Carousel movies={similar} title={`Similar ${titleForCarousel}`} setReload={true} />
+            <Footer />
         </>
     )
 }

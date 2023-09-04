@@ -591,8 +591,21 @@ nav {
 
 .footer {
     width: 100%;
-    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     background-color: $black;
+    padding: 2.5% 0;
+    p, a {
+        color: #cacaca;
+    }
+    a {
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }
 
 @media only screen and (max-width: 769px) {

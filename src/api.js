@@ -22,6 +22,15 @@ const apiKey = import.meta.env.VITE_REACT_APIKEY
 //     });
 // }
 
+export const getDetails = async (type, id) => {
+  try {
+    const details = await axios.get(`${baseUrl}/${type}/${id}?&page=1&api_key=${apiKey}`)
+    return details.data
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export const getReviews = (type, id) => {
     const options = {
       method: 'GET',

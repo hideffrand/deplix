@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { searchMovie } from '/src/api'
 import SecondaryNavbar from '../components/SecondaryNavbar'
+import Footer from './Footer'
 
 export default function Discover() {
     const navigate = useNavigate()
@@ -86,13 +87,13 @@ export default function Discover() {
                         <ion-icon id='searchIcon' name="search"></ion-icon>
                     </div>
                 </div>
-
                 <div className="wrapper">
                     <section>
                         <SearchResultList />
                     </section>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }
