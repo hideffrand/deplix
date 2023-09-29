@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPopularMovieList } from "../api";
+import bladerunner from "/src/assets/bladerunner.webp"
 // import { onAuthStateChanged } from "firebase/auth";
 // import { auth } from "../firebase";
 // import {  signOut } from "firebase/auth";
@@ -7,7 +8,7 @@ import "/src/style/style.css";
 
 export default function Homepage() {
   const [popularMovies, setPopularMovies] = useState([]);
-  const [bgImage, setBgImg] = useState("/src/assets/bladerunner.webp");
+  const [bgImage, setBgImg] = useState(bladerunner);
 
   useEffect(() => {
     getPopularMovieList().then((result) => {
