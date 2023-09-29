@@ -1,8 +1,7 @@
 import '../style/style.css'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-export default function Carousel({ movies, setId, title, setReload }) {
-    const { id } = useParams()
+export default function Carousel({ movies, setDivId, title, setReload }) {
     const navigate = useNavigate()
 
     const MovieList = () => {
@@ -15,13 +14,7 @@ export default function Carousel({ movies, setId, title, setReload }) {
                             alt={movie.title ? movie.title : movie.name}
                             title={movie.title ? movie.title : movie.name}
                             onClick={() => {
-                                setReload && window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-                                navigate(`/movie-details/${movie.id}`, {
-                                    state: {
-                                        movieId: movie.id,
-                                        movieType: movie.title ? 'movie' :'tv',
-                                    }
-                                })
+                                navigate(`/movie-details/${movie.title ? 'movie' : 'tv'}/${movie.id}`)
                             }}
                         />
                         <div className="titleSection">
@@ -41,7 +34,7 @@ export default function Carousel({ movies, setId, title, setReload }) {
         )
     }
     return (
-        <div className="carousel" id={setId}>
+        <div className="carousel" id={setDivId}>
             <div className="wrapper">
                 <h1>{ title }</h1>
                 <section>

@@ -56,10 +56,10 @@ export default function App() {
       </div> */}
       <Navbar />
       <Homepage />
-      <Carousel movies={(popularMovies)} setId={'popular'} title={'Popular Movies'} setReload={false} />
-      <Carousel movies={(TopRatedMovies)} setId={'topRatedMovies'} title={'Top Rated Movies'} setReload={false} />
-      <Carousel movies={(TopRatedTV)} setId={'TopRatedTV'} title={'Top Rated TV'} setReload={false} />
-      <Carousel movies={(upcomingList)} setId={'upcoming'} title={'Upcoming'} setReload={false} />
+      <Carousel movies={(popularMovies)} setDivId={'popular'} title={'Popular Movies'} setReload={false} />
+      <Carousel movies={(TopRatedMovies)} setDivId={'topRatedMovies'} title={'Top Rated Movies'} setReload={false} />
+      <Carousel movies={(TopRatedTV)} setDivId={'TopRatedTV'} title={'Top Rated TV'} setReload={false} />
+      <Carousel movies={(upcomingList)} setDivId={'upcoming'} title={'Upcoming'} setReload={false} />
       <Footer />
     </>
   )

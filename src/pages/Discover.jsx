@@ -38,12 +38,10 @@ export default function Discover() {
         return (
             <>
                 {searchResult?.map((movie, i) => (
-                    <div className="movie-container" key={i} onClick={() => navigate(`/movie-details/${movie.id}`, {
-                        state: {
-                            movieId: movie.id,
-                            movieType: movie.title ? 'movie' : 'tv',
-                        }
-                    })}>
+                    <div className="movie-container"
+                        key={i}
+                        onClick={() => navigate(`/movie-details/${movie.title ? 'movie' : 'tv'}/${movie.id}`)}
+                    >
                         <img src={movie.poster_path ? `${import.meta.env.VITE_REACT_BASEIMGURL}/${movie.poster_path}` : '/src/assets/imgNotFound.webp' } alt="" />
                     </div>
                 ))}

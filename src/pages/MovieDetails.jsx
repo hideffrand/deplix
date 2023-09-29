@@ -1,5 +1,5 @@
 import '/src/style/style.css'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { getReviews, getSimilar, getDetails } from '../api'
 import SecondaryNavbar from '../components/SecondaryNavbar'
@@ -7,39 +7,32 @@ import Carousel from '../components/Carousel'
 import Footer from './Footer'
 
 export default function MovieDetails() {
+    const { type, id} = useParams()
     const [details, setDetails] = useState([])
     const [reviews, setReviews] = useState([])
     const [similar, setSimilar] = useState([])
     const [loadingReviews, setLoadingReviews] = useState(false)
     
     useEffect(() => {
-        try {
-            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-            getDetails('movie', movieId).then((result) => {
-                setDetails(result)
-                document.title = `${result.title} - Deplix`
-                console.log('log details: ', result)
-            })
-            getReviews(type, movieId).then(result => {
-                setLoadingReviews(true)
-                setTimeout(() => {
-                    setLoadingReviews(false)
-                    console.log('reviews log: ', result)
-                    setReviews(result)
-                }, 0);
-            })
-            getSimilar(type, movieId).then(result => {
-                setSimilar(result)
-            })
-        } catch (error) {
-            console.log(error)
-        }
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        getDetails(type, id).then((result) => {
+            setDetails(result)
+            document.title = `${result.title ? result.title : result.name} - Deplix`
+        })
+        getReviews(type, id).then(result => {
+            setLoadingReviews(true)
+            setTimeout(() => {
+                setLoadingReviews(false)
+                console.log('reviews log: ', result)
+                setReviews(result)
+            }, 0);
+        })
+        getSimilar(type, id).then(result => {
+            setSimilar(result)
+        })
     }, [])
     
     const navigate = useNavigate()
-    const location = useLocation()
-    const type = location.state.movieType
-    const movieId = location.state.movieId
     const voteAverage = details.vote_average
 
     let titleForCarousel = ''

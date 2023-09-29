@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const baseUrl = import.meta.env.VITE_REACT_BASEURL
 const apiKey = import.meta.env.VITE_REACT_APIKEY
+const apiToken = import.meta.env.VITE_REACT_APITOKEN
 
 // export const generateGuestSession = () => {
 //   const options = {
@@ -11,7 +12,7 @@ const apiKey = import.meta.env.VITE_REACT_APIKEY
 //       Authorization: `Bearer ${import.meta.env.VITE_REACT_APITOKEN}`
 //     }
 //   };
-  
+
 //   return axios.get(`${baseUrl}/authentication/guest_session/new`, options)
 //     .then(response => {
 //       console.log('res from api: ',response)
@@ -36,7 +37,7 @@ export const getReviews = (type, id) => {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${import.meta.env.VITE_REACT_APITOKEN}`
+        Authorization: `Bearer ${apiToken}`
       }
     };
     return axios.get(`${import.meta.env.VITE_REACT_BASEURL}/${type}/${id}/reviews?language=en-US&page=1`, options)
