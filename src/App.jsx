@@ -11,7 +11,6 @@ export default function App() {
   const [TopRatedMovies, setTopRatedMovies] = useState([])
   const [TopRatedTV, setTopRatedTV] = useState([])
   const [upcomingList, setUpcomingList] = useState([])
-  console.log(popularMovies)
   
   useEffect(() => {
     // generateGuestSession().then((result) => {
@@ -21,6 +20,7 @@ export default function App() {
     //   console.log(guestSessionId)
     // })
     // localStorage.setItem('fakeId', Math.random())
+    document.title = 'Deplix - Watch Movies Online'
     getPopularMovieList().then((result) => {
       setPopularMovies(result)
     })

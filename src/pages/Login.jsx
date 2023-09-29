@@ -4,13 +4,14 @@ import '/src/style/style.css'
 import { useState } from 'react'
 import { emailRegex } from '../utils/emailRegex'
 import { Link } from 'react-router-dom'
+// import { logInWithEmailAndPassword } from '../firebase'
 
 
 export default function Login() {
     
     const [email, setEmail] = useState('')
-    const [displayAlertEmail, setDisplayAlertEmail] = useState('none')
     const [password, setPassword] = useState('')
+    const [displayAlertEmail, setDisplayAlertEmail] = useState('none')
     const [eye, setEye] = useState('eye-outline')
     const [typePassword, setTypePassword] = useState('password')
     
@@ -32,6 +33,7 @@ export default function Login() {
         if (!emailRegex(email)) {
             setDisplayAlertEmail('block')
         } else {
+            logInWithEmailAndPassword(email, password)
             document.getElementById('form').reset()
             setEmail('')
             setPassword('')

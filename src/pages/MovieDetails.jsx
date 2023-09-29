@@ -10,27 +10,30 @@ export default function MovieDetails() {
     const [details, setDetails] = useState([])
     const [reviews, setReviews] = useState([])
     const [similar, setSimilar] = useState([])
-    const [maxLength, setMaxLength] = useState(true)
     const [loadingReviews, setLoadingReviews] = useState(false)
     
     useEffect(() => {
-        getDetails('movie', movieId).then((result) => {
-            setDetails(result)
-            console.log('log details: ', result)
-        })
-        document.title = (details.title ? details.title : details.name) + ' '+ '- Deplix'
-        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-        getReviews(type, movieId).then(result => {
-            setLoadingReviews(true)
-            setTimeout(() => {
-                setLoadingReviews(false)
-                console.log('reviews log: ', result)
-                setReviews(result)
-            }, 0);
-        })
-        getSimilar(type, movieId).then(result => {
-            setSimilar(result)
-        })
+        try {
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            getDetails('movie', movieId).then((result) => {
+                setDetails(result)
+                document.title = `${result.title} - Deplix`
+                console.log('log details: ', result)
+            })
+            getReviews(type, movieId).then(result => {
+                setLoadingReviews(true)
+                setTimeout(() => {
+                    setLoadingReviews(false)
+                    console.log('reviews log: ', result)
+                    setReviews(result)
+                }, 0);
+            })
+            getSimilar(type, movieId).then(result => {
+                setSimilar(result)
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }, [])
     
     const navigate = useNavigate()
@@ -38,8 +41,6 @@ export default function MovieDetails() {
     const type = location.state.movieType
     const movieId = location.state.movieId
     const voteAverage = details.vote_average
-    const movieTitle = location.state.movieTitle
-    const movieName = location.state.movieName
 
     let titleForCarousel = ''
     if (type == 'movie') {
@@ -50,13 +51,19 @@ export default function MovieDetails() {
     }
     console.log('type :',type)
 
-
-
     const ReviewList = () => {
+        const [maxLenghts, setMaxLengths] = useState(reviews?.map(() => true));
+    
+        const toggleMaxLength = (index) => {
+            const updatedMaxLenghts = [...maxLenghts];
+            updatedMaxLenghts[index] = !updatedMaxLenghts[index];
+            setMaxLengths(updatedMaxLenghts);
+        };
+    
         if (reviews?.length > 0) {
             return (
                 <>
-                    <p>{reviews.length} reveiws</p>
+                    <p>{reviews.length} reviews</p>
                     {reviews?.map((review, i) => (
                         <div className="reviewContainer" key={i}>
                             <div className="profile">
@@ -65,33 +72,27 @@ export default function MovieDetails() {
                                 }}></div>
                                 <p id='author'>{review.author_details.username}</p>
                             </div>
+                            {maxLenghts[i] ? <p>{(review.content).slice(0, 300) + '...'}</p> : <p>{(review.content)}</p>}
                             {
-                                maxLength ? <p>{(review.content).slice(0, 300) + '...'}</p> : <p>{(review.content)}</p>
-                            }
-                            {
-                                ((review.content).length > 300) &&
-                                <p
-                                    onClick={() => setMaxLength(!maxLength)}
-                                    style={{
-                                        cursor: 'pointer',
-                                        color: 'white',
-                                }}>{maxLength ? 'See more...' : 'Show less...'}</p>
+                                review.content.length > 300 &&
+                                <p onClick={() => toggleMaxLength(i)} style={{cursor: 'pointer', color: 'white'}}>
+                                    {maxLenghts[i] ? 'See more...' : 'Show less...'}
+                                </p>
                             }
                             <p style={{paddingTop: '10px', textAlign: 'end'}}>Posted at {(review.created_at).slice(0, 10)}</p>
                         </div>
                     ))}
                 </>
-            )
+            );
         } else {
             return (
                 <>
-                    <p style={{
-                        color: 'rgb(200, 200, 200)'
-                    }}>0 Reviews</p>
+                    <p style={{color: 'rgb(200, 200, 200)'}}>0 Reviews</p>
                 </>
-            )
+            );
         }
-    }
+    };
+    
 
     return (
         <>

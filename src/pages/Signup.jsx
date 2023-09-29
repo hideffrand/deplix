@@ -2,9 +2,12 @@ import { useState } from 'react'
 import BackButton from '../components/BackButton'
 import '/src/style/style.css'
 import { emailRegex } from '../utils/emailRegex'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+// import {  createUserWithEmailAndPassword  } from 'firebase/auth';
+// import { auth, signInWithEmailAndPassword } from '../firebase';
 
 export default function Signup() {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [eye, setEye] = useState('eye-outline')
@@ -21,13 +24,28 @@ export default function Signup() {
         }
     }
 
-    const handleSubmit = () => {
-        const termsCon = document.getElementById('termsCOn').checked
-        if (emailRegex(email) && termsCon) {
-            console.log('register success')
-        } else {
-            console.log('please checkbox')
-        }
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        // await createUserWithEmailAndPassword(auth, email, password)
+        //     .then((userCredential) => {
+        //         // Signed in
+        //         const user = userCredential.user;
+        //         console.log(user);
+        //         navigate("/")
+        //         // ...
+        //     })
+        //     .catch((error) => {
+        //         const errorCode = error.code;
+        //         const errorMessage = error.message;
+        //         console.log(errorCode, errorMessage);
+        //         // ..
+        //     });
+        // const termsCon = document.getElementById('termsCOn').checked
+        // if (emailRegex(email) && termsCon) {
+        //     console.log('register success')
+        // } else {
+        //     console.log('please checkbox')
+        // }
     }
 
     return (

@@ -414,18 +414,13 @@ nav {
 .homepage {
     width: 100%;
     height: 50vh;
-    background-image: 
-        linear-gradient(to right, rgb(15,15,15,1), rgb(255,255,255, 0)), 
-        linear-gradient(to left, rgb(15,15,15,1), rgb(255,255,255, 0)), 
-        url('/src/assets/bladerunner.webp')
-    ;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
     padding-top: 10vh;
-    // animation: dinamicBackground 5s infinite;
+    animation: dinamicBackground 5s infinite;
     .container {
         display: flex;
         flex-direction: column;
@@ -567,7 +562,7 @@ nav {
             @media only screen and (max-width: 769px) {
                 width: 100%;
                 p {
-                    font-size: 10px;
+                    font-size: 12px;
                 }
                 h1 {
                     font-size: 20px;

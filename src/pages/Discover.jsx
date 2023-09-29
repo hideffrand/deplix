@@ -41,13 +41,6 @@ export default function Discover() {
                     <div className="movie-container" key={i} onClick={() => navigate(`/movie-details/:${movie.id}`, {
                         state: {
                             movieId: movie.id,
-                            movieBackdropPath: movie.backdrop_path,
-                            movieTitle: movie.title,
-                            movieName: movie.name,
-                            moviePoster: movie.poster_path,
-                            movieOverview: movie.overview,
-                            movieReleaseDate: movie.release_date,
-                            movieVoteAverage: movie.vote_average,
                             movieType: movie.title ? 'movie' : 'tv',
                         }
                     })}>
