@@ -29,17 +29,17 @@ export default function Homepage() {
     // });
   }, []);
     
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-        navigate("/");
-        console.log("Signed out successfully");
-      })
-      .catch((error) => {
-        // An error happened.
-      });
-  };
+  // const handleLogout = () => {
+  //   signOut(auth)
+  //     .then(() => {
+  //       // Sign-out successful.
+  //       navigate("/");
+  //       console.log("Signed out successfully");
+  //     })
+  //     .catch((error) => {
+  //       // An error happened.
+  //     });
+  // };
 
   // for (let i = 0; i < popularMovies.length; i++) {
   //     setTimeout(function() {

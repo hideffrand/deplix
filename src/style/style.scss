@@ -439,6 +439,60 @@ nav {
     }
 }
 
+.watchlist {
+    min-height: 100vh;
+    max-height: auto;
+    background-color: $black;
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding: 10vh 10%;
+        h1 {
+            padding-top: 2%;
+            font-size: 20px;
+        }
+        p {
+            padding-bottom: 2%;
+        }
+        .movieContainer {
+            margin: 2% 0;
+            display: flex;
+            gap: 20px;
+            width: 90%;
+            border: 1px solid rgb(40, 40, 40);
+            border-radius: 10px;
+            transition: 0.3s;
+            cursor: pointer;
+            .textSection {
+                padding: 2% 0;
+                h3 {
+                    padding-bottom: 2%;
+                }
+                p {
+                    color: rgb(160, 160, 160);
+                    font-size: 14px;
+                }
+            }
+            img {
+                width: 10%;
+                transition: 0.3s;
+                &:hover {
+                    width: 20%;
+                    transition: 0.3s;
+                }
+            }
+            &:hover {
+                transition: 0.3s;
+                border: 1px solid $red;
+                img {
+                    width: 20%;
+                    transition: 0.3s;
+                }
+            }
+        }
+    }
+}
+
 .carousel {
     width: 100%;
     height: auto;

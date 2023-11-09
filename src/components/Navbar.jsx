@@ -20,6 +20,7 @@ export default function Navbar() {
                     <Searchbar setAnimation={'none'} />
                 </div>
                 <ion-icon id='searchIcon' name="search" onClick={() => navigate('/discover')}></ion-icon>
+                <button className='userBtn' onClick={() => navigate('/watchlist')}><ion-icon name="bookmarks-outline"></ion-icon></button>
                 <button className="userBtn" onClick={() => navigate('signup')}>
                     <ion-icon name="person-circle-outline"></ion-icon>
                 </button>

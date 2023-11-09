@@ -434,6 +434,60 @@ nav section .links a:hover {
   color: rgb(170, 170, 170);
 }
 
+.watchlist {
+  min-height: 100vh;
+  max-height: auto;
+  background-color: rgb(15, 15, 15);
+}
+.watchlist .container {
+  display: flex;
+  flex-direction: column;
+  padding: 10vh 10%;
+}
+.watchlist .container h1 {
+  padding-top: 2%;
+  font-size: 20px;
+}
+.watchlist .container p {
+  padding-bottom: 2%;
+}
+.watchlist .container .movieContainer {
+  margin: 2% 0;
+  display: flex;
+  gap: 20px;
+  width: 90%;
+  border: 1px solid rgb(40, 40, 40);
+  border-radius: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.watchlist .container .movieContainer .textSection {
+  padding: 2% 0;
+}
+.watchlist .container .movieContainer .textSection h3 {
+  padding-bottom: 2%;
+}
+.watchlist .container .movieContainer .textSection p {
+  color: rgb(160, 160, 160);
+  font-size: 14px;
+}
+.watchlist .container .movieContainer img {
+  width: 10%;
+  transition: 0.3s;
+}
+.watchlist .container .movieContainer img:hover {
+  width: 20%;
+  transition: 0.3s;
+}
+.watchlist .container .movieContainer:hover {
+  transition: 0.3s;
+  border: 1px solid rgb(249, 25, 25);
+}
+.watchlist .container .movieContainer:hover img {
+  width: 20%;
+  transition: 0.3s;
+}
+
 .carousel {
   width: 100%;
   height: auto;
