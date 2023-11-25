@@ -27,9 +27,13 @@ export default function Signup() {
         e.preventDefault()
         const termsCon = document.getElementById('termsCon').checked
         if (emailRegex(email) && termsCon) {
-            const user = await authSignupEmailFirebase(email, password)
-            console.log(`register success \n user: ${user}`)
-            navigate("/")
+            try {
+                await authSignupEmailFirebase(email, password)
+                console.log(`register success`)
+                navigate("/")
+            } catch (error) {
+                console.error(error)
+            }
         } else {
             console.log('please checkbox')
         }
@@ -40,7 +44,7 @@ export default function Signup() {
             <div className="container">
                 <h1>Welcome !</h1>
                 <p>Sign up for more Movies and TV Series, use Watchlist, and Bookmarks your favourites!</p>
-                <form action="" onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <label htmlFor="email">Email</label>
                     <input type="text" id='email' required placeholder='Your email...' onChange={(e) => setEmail(e.target.value) }/>
                     <label htmlFor="password">Password</label>

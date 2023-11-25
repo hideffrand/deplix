@@ -18,7 +18,7 @@ export default function Homepage() {
       console.log(user.email)
       setName(user.email)
     }
-  }, []);
+  }, [name]);
     
   // const handleLogout = () => {
   //   signOut(auth)

@@ -12,7 +12,7 @@ export default function Navbar() {
     function handleProfileButton() {
         const user = authGetUserProfile()
         if (user) {
-            navigate("/")
+            navigate("/profile")
         } else {
             navigate("/signup")
         }

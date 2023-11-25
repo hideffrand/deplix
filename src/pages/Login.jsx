@@ -27,25 +27,35 @@ export default function Login() {
         }
     }
     
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         if (emailRegex(email)) {
-            authLoginEmailFirebase(email, password)
-            console.log('login success')
-            navigate("/")
-            return user
+          try {
+            await authLoginEmailFirebase(email, password);
+            console.log('login success');
+            navigate("/");
+          } catch (error) {
+            setDisplayAlertEmail('block');
+            setEmail('');
+            setPassword('');
+            console.error('Login error:', error);
+            // Handle the error appropriately, e.g., display an error message to the user.
+          }
         } else {
-            setDisplayAlertEmail('block')
-            setEmail('')
-            setPassword('')
+          setDisplayAlertEmail('block');
+          setEmail('');
+          setPassword('');
         }
-    }
+      };
+      
+    
 
     return (
         <div className="authForm">
             <div className="container">
                 <h1>Welcome back !</h1>
                 <p>Tired from the day? Enjoy your favourite Movies and TV Series now.</p>
-                <form action="#" id='form'>
+                <form onSubmit={handleSubmit}>
                     <label htmlFor="email">Email</label>
                     <input type="text" id='email' required placeholder='Your email...' onChange={(e) => setEmail(e.target.value)}/>
                     <p id='alertEmail' style={{
@@ -57,9 +67,9 @@ export default function Login() {
                     <label htmlFor="password">Password</label>
                     <div className="passwordInput">
                         <input type={typePassword} id="password" required placeholder='Your password...' onChange={(e) => setPassword(e.target.value)}/>
-                        <button id='eyeBtn' onClick={handleEye}><ion-icon name={eye}></ion-icon></button>
+                        <button id='eyeBtn'onClick={() => handleEye()}><ion-icon name={eye}></ion-icon></button>
                     </div>
-                    <button id='loginBtn' onClick={handleSubmit}>
+                    <button id='loginBtn' type='submit'>
                         Login
                     </button>
                 </form>
