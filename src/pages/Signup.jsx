@@ -3,8 +3,7 @@ import BackButton from '../components/BackButton'
 import '/src/style/style.css'
 import { emailRegex } from '../utils/emailRegex'
 import { Link, useNavigate } from 'react-router-dom'
-// import {  createUserWithEmailAndPassword  } from 'firebase/auth';
-// import { auth, signInWithEmailAndPassword } from '../firebase';
+import { authSignupEmailFirebase } from '../auth/authSignupEmailFirebase'
 
 export default function Signup() {
     const navigate = useNavigate()
@@ -26,26 +25,14 @@ export default function Signup() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // await createUserWithEmailAndPassword(auth, email, password)
-        //     .then((userCredential) => {
-        //         // Signed in
-        //         const user = userCredential.user;
-        //         console.log(user);
-        //         navigate("/")
-        //         // ...
-        //     })
-        //     .catch((error) => {
-        //         const errorCode = error.code;
-        //         const errorMessage = error.message;
-        //         console.log(errorCode, errorMessage);
-        //         // ..
-        //     });
-        // const termsCon = document.getElementById('termsCOn').checked
-        // if (emailRegex(email) && termsCon) {
-        //     console.log('register success')
-        // } else {
-        //     console.log('please checkbox')
-        // }
+        const termsCon = document.getElementById('termsCon').checked
+        if (emailRegex(email) && termsCon) {
+            const user = await authSignupEmailFirebase(email, password)
+            console.log(`register success \n user: ${user}`)
+            navigate("/")
+        } else {
+            console.log('please checkbox')
+        }
     }
 
     return (

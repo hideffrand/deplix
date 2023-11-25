@@ -3,20 +3,18 @@ import BackButton from '../components/BackButton'
 import '/src/style/style.css'
 import { useState } from 'react'
 import { emailRegex } from '../utils/emailRegex'
-import { Link } from 'react-router-dom'
-// import { logInWithEmailAndPassword } from '../firebase'
+import { Link, useNavigate } from 'react-router-dom'
+import { authLoginEmailFirebase } from '../auth/authLoginEmailFirebase'
 
 
 export default function Login() {
+    const navigate = useNavigate()
     
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [displayAlertEmail, setDisplayAlertEmail] = useState('none')
     const [eye, setEye] = useState('eye-outline')
     const [typePassword, setTypePassword] = useState('password')
-    
-    console.log(email)
-    console.log(password)
 
     const handleEye = () => {
         if (eye == 'eye-outline') {
@@ -29,15 +27,16 @@ export default function Login() {
         }
     }
     
-    const handleSubmit = () => {
-        if (!emailRegex(email)) {
-            setDisplayAlertEmail('block')
+    const handleSubmit = async () => {
+        if (emailRegex(email)) {
+            authLoginEmailFirebase(email, password)
+            console.log('login success')
+            navigate("/")
+            return user
         } else {
-            logInWithEmailAndPassword(email, password)
-            document.getElementById('form').reset()
+            setDisplayAlertEmail('block')
             setEmail('')
             setPassword('')
-            // send to backend
         }
     }
 

@@ -5,6 +5,7 @@ import { getReviews, getSimilar, getDetails } from '../api'
 import SecondaryNavbar from '../components/SecondaryNavbar'
 import Carousel from '../components/Carousel'
 import Footer from './Footer'
+import Image from '../components/Image'
 
 export default function MovieDetails() {
     const { type, id} = useParams()
@@ -95,10 +96,7 @@ export default function MovieDetails() {
             }}>
                 <div className="movieDetailsContainer">
                     <div className="imgSection">
-                        <img
-                            src={details.poster_path ? `${import.meta.env.VITE_REACT_BASEIMGURL}/${details.poster_path}` : '/src/assets/imgNotFound.webp'}
-                            alt={`Poster ${details.title ? details.title : details.name}`}
-                        />
+                        <Image url={details.poster_path} title={details.title} name={details.name}/>
                     </div>
                     <div className="textSection">
                         <h1>{details.title ? details.title : details.name}</h1>

@@ -1,32 +1,23 @@
 import { useEffect, useState } from "react";
 import { getPopularMovieList } from "../api";
 import bladerunner from "/src/assets/bladerunner.webp"
-// import { onAuthStateChanged } from "firebase/auth";
-// import { auth } from "../firebase";
-// import {  signOut } from "firebase/auth";
+import { authGetUserProfile } from "../auth/authGetUserProfile";
 import "/src/style/style.css";
 
 export default function Homepage() {
   const [popularMovies, setPopularMovies] = useState([]);
   const [bgImage, setBgImg] = useState(bladerunner);
+  const [name, setName] = useState('Stranger')
 
   useEffect(() => {
     getPopularMovieList().then((result) => {
       setPopularMovies(result);
     });
-    // onAuthStateChanged(auth, (user) => {
-    //   if (user) {
-    //     // User is signed in, see docs for a list of available properties
-    //     // https://firebase.google.com/docs/reference/js/firebase.User
-    //     const uid = user.uid;
-    //     // ...
-    //     console.log("user", user);
-    //   } else {
-    //     // User is signed out
-    //     // ...
-    //     console.log("user is logged out");
-    //   }
-    // });
+    const user = authGetUserProfile()
+    if (user) {
+      console.log(user.email)
+      setName(user.email)
+    }
   }, []);
     
   // const handleLogout = () => {
@@ -59,7 +50,7 @@ export default function Homepage() {
       {/* <button onClick={handleLogout}>Logout</button> */}
       <div className="container">
         <h3>Welcome,</h3>
-        <h1>Stranger</h1>
+        <h1>{name}</h1>
         <p>Watch limitless TV Shows and Movies from around the world.</p>
         <p>Ready to watch?</p>
       </div>
