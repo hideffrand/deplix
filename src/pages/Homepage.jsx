@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { getPopularMovieList } from "../api";
 import bladerunner from "/src/assets/bladerunner.webp"
 import { authGetUserProfile } from "../auth/authGetUserProfile";
+import { onAuthStateChange } from "../auth/onAuthStateChange";
 import "/src/style/style.css";
 
 export default function Homepage() {
+  const [index, setIndex] = useState(0)
   const [popularMovies, setPopularMovies] = useState([]);
   const [bgImage, setBgImg] = useState(bladerunner);
   const [name, setName] = useState('Stranger')
@@ -13,31 +15,14 @@ export default function Homepage() {
     getPopularMovieList().then((result) => {
       setPopularMovies(result);
     });
+    onAuthStateChange()
     const user = authGetUserProfile()
     if (user) {
-      console.log(user.email)
-      setName(user.email)
+      console.log(user)
+      setName(user.displayName)
     }
-  }, [name]);
-    
-  // const handleLogout = () => {
-  //   signOut(auth)
-  //     .then(() => {
-  //       // Sign-out successful.
-  //       navigate("/");
-  //       console.log("Signed out successfully");
-  //     })
-  //     .catch((error) => {
-  //       // An error happened.
-  //     });
-  // };
+  }, []);
 
-  // for (let i = 0; i < popularMovies.length; i++) {
-  //     setTimeout(function() {
-  //         console.log(i);
-  //         setBgImg(`${import.meta.env.VITE_REACT_BASEIMGURL}/${popularMovies[i].poster_path}`)
-  //     }, 6000 * i);
-  // }
 
   return (
     <div
@@ -49,7 +34,7 @@ export default function Homepage() {
     >
       {/* <button onClick={handleLogout}>Logout</button> */}
       <div className="container">
-        <h3>Welcome,</h3>
+        <h3>Welcome back!</h3>
         <h1>{name}</h1>
         <p>Watch limitless TV Shows and Movies from around the world.</p>
         <p>Ready to watch?</p>

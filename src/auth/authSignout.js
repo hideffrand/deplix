@@ -1,8 +1,7 @@
-import { getAuth, signOut } from "firebase/auth";
-import { app } from "../config/firebase";
+import { signOut } from "firebase/auth";
+import { auth } from "../config/firebase";
 
 export const authSignout = () => {
-    const auth = getAuth(app);
     signOut(auth).then(() => {
         console.log('Signed out')
     }).catch((error) => {

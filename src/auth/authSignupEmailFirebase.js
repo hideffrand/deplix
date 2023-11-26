@@ -1,9 +1,8 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { app } from "../config/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firebase";
 import { useNavigate } from "react-router-dom";
 
 export const authSignupEmailFirebase = (email, password) => {
-  const auth = getAuth(app);
   return new Promise((resolve, reject) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {

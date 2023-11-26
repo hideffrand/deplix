@@ -43,6 +43,7 @@ export default function Discover() {
                         onClick={() => navigate(`/movie-details/${movie.title ? 'movie' : 'tv'}/${movie.id}`)}
                     >
                         <img src={movie.poster_path ? `${import.meta.env.VITE_REACT_BASEIMGURL}/${movie.poster_path}` : '/src/assets/imgNotFound.webp' } alt="" />
+                        <p>{movie.title ? movie.title : movie.name}</p>
                     </div>
                 ))}
             </>

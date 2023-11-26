@@ -6,18 +6,23 @@ import Footer from './Footer'
 import Image from '../components/Image'
 import '/src/style/style.css'
 import { useNavigate } from 'react-router-dom'
-
+import { onAuthStateChange } from '../auth/onAuthStateChange'
 
 export default function Watchlist() {
     const [popularMovies, setPopularMovies] = useState([]);
     const navigate = useNavigate()
 
     useEffect(() => {
-        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-        getPopularMovieList().then((result) => {
-            setPopularMovies(result);
-        });
-        console.log(popularMovies)
+        const user = onAuthStateChange()
+        if (user) {
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            getPopularMovieList().then((result) => {
+                setPopularMovies(result);
+            });
+            console.log(popularMovies)
+        } else {
+            navigate("/signup")
+        }
     }, [])
     
     return (

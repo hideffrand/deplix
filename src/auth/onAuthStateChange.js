@@ -1,13 +1,14 @@
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { app } from "../config/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../config/firebase";
 
 export const onAuthStateChange = () => {
-    const auth = getAuth(app);
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            return true
+            const uid = user.uid
+            console.log(uid)
+            return user.uid
         } else {
-            return false
+            console.error('Error onAuthStateChange')
         }
     });
 }
