@@ -31,7 +31,7 @@ export default function MovieDetails() {
         getSimilar(type, id).then(result => {
             setSimilar(result)
         })
-    }, [])
+    }, [type, id])
     
     const navigate = useNavigate()
     const voteAverage = details.vote_average
@@ -87,7 +87,6 @@ export default function MovieDetails() {
         }
     };
     
-
     return (
         <>
             <SecondaryNavbar />
