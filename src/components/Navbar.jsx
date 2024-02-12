@@ -1,30 +1,9 @@
 import "/src/style/style.css";
 import { useNavigate } from "react-router-dom";
 import Searchbar from "./Searchbar";
-import { authSignout } from "../auth/authSignout";
-import { onAuthStateChange } from "../auth/onAuthStateChange";
-import { authGetUserProfile } from "../auth/authGetUserProfile";
-import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const [showLogoutButton, setShowLogoutButton] = useState(false);
-
-  function handleProfileButton() {
-    const user = authGetUserProfile();
-    if (user) {
-      navigate("/profile");
-    } else {
-      navigate("/signup");
-    }
-  }
-
-  useEffect(() => {
-    const user = authGetUserProfile();
-      if (user !== null) {
-        setShowLogoutButton(true)
-    }
-  }, []);
 
   return (
     <nav>
@@ -45,17 +24,6 @@ export default function Navbar() {
           name="search"
           onClick={() => navigate("/discover")}
         ></ion-icon>
-        <button className="userBtn" onClick={() => navigate("/watchlist")}>
-          <ion-icon name="bookmarks-outline"></ion-icon>
-        </button>
-        <button className="userBtn" onClick={() => handleProfileButton()}>
-          <ion-icon name="person-circle-outline"></ion-icon>
-        </button>
-        {showLogoutButton && (
-          <button className="userBtn" onClick={() => authSignout()}>
-            <ion-icon name="log-out-outline"></ion-icon>
-          </button>
-        )}
       </section>
     </nav>
   );

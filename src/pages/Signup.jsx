@@ -1,9 +1,7 @@
 import { useState } from "react";
 import BackButton from "../components/BackButton";
 import "/src/style/style.css";
-import { emailRegex } from "../utils/emailRegex";
 import { Link, useNavigate } from "react-router-dom";
-import { authSignupEmailFirebase } from "../auth/authSignupEmailFirebase";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -11,6 +9,7 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [eye, setEye] = useState("eye-outline");
   const [typePassword, setTypePassword] = useState("password");
+  const [errorCheckbox, seterrorCheckBox] = useState(false);
 
   const handleEye = () => {
     if (eye == "eye-outline") {
@@ -24,19 +23,21 @@ export default function Signup() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const termsCon = document.getElementById("termsCon").checked;
-    if (emailRegex(email) && termsCon) {
-      try {
-        await authSignupEmailFirebase(email, password);
-        console.log(`register success`);
-        navigate("/");
-      } catch (error) {
-        console.error(error);
-      }
-    } else {
-      console.log("please checkbox");
-    }
+    alert("Signup still in progress");
+    // e.preventDefault();
+    // const termsCon = document.getElementById("termsCon").checked;
+    // if (emailRegex(email) && termsCon) {
+    //   try {
+    //     await authSignupEmailFirebase(email, password);
+    //     console.log(`register success`);
+    //     navigate("/");
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // } else {
+    //   seterrorCheckBox(true)
+    //   console.log("please checkbox");
+    // }
   };
 
   return (
@@ -75,6 +76,7 @@ export default function Signup() {
               I agree with <a href="">Terms</a> and <a href="">Condition</a>
             </label>
           </span>
+          {errorCheckbox && <p>! Terms and Condition must be checked</p>}
           <button type="submit" id="loginBtn">
             Signup
           </button>

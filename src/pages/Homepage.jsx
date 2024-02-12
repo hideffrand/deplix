@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPopularMovieList } from "../api";
 import bladerunner from "/src/assets/bladerunner.webp"
-import { authGetUserProfile } from "../auth/authGetUserProfile";
-import { onAuthStateChange } from "../auth/onAuthStateChange";
 import "/src/style/style.css";
 
 export default function Homepage() {
@@ -15,12 +13,6 @@ export default function Homepage() {
     getPopularMovieList().then((result) => {
       setPopularMovies(result);
     });
-    onAuthStateChange()
-    const user = authGetUserProfile()
-    if (user) {
-      console.log(user)
-      setName(user.displayName)
-    }
   }, []);
 
 
